@@ -81,7 +81,7 @@ async.series([
   function workingWithCells(step) {
     sheet.getCells({
       'min-row': 2,
-      'max-row': 5,
+      'max-row': 20,
 	  'min-col': 2,
 	  'max-col': 24,
       'return-empty': true
