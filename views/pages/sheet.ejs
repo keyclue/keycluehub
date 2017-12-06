@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<% include ../partials/header.ejs %>
+		</head>
+		<body>
+			
+			<form action="" name="form" method="post">
+				<div class="col-lg-6">
+					<input  class="form-control " type="text" name="sheet_url" />
+				</div>
+				<div class="col-lg-3">
+					<input class="btn btn-primary" type="submit" name="submit" value="sync">
+				</div>
+			</form>
+			<div class="container">
+				<% if(data != ""){ %>
+				
+					<table id = "example" class="table table-bordered">
+						<tr>
+						<% data.forEach(function(r, index) { %>
+																					
+							<% if(index > 0 && index % 23 == 0){ %>
+						</tr><tr>
+							<% } %>
+							<% if(index < 23){ %>
+								<th><%= r.value %> </th>
+							<% }else{ %>
+								<td><%= r.value %> </td>
+							<% } %>
+						<% }); %>
+						</tr>
+					</table>
+				<!--a class="save" href="javascript:void(0);">Save</a-->
+				<% } %>
+			</div>
+			
+			<script>
+			
+$(document).ready(function() {
+ $('table').SetEditable();
+ $(".save").click(function() {
+ $("table").find('tr').each(function (i, el) {
+        var $tds = $(this).find('td'),
+            productId = $tds.eq(0).text(),
+            product   = $tds.eq(1).text(),
+            Quantity  = $tds.eq(2).text(),
+            brand     = $tds.eq(3).text(),
+            p_name    = $tds.eq(4).text();
+        // do something with productId, product, Quantity
+	  alert('Row ' + (i + 1) + ':\nSPU: ' + productId
+              + '\nSKU: ' + product
+              + '\nBarcodeNo: ' + Quantity
+              + '\nBrand: ' + brand
+              + '\nProduct Name: ' + p_name
+			  
+			  );
+    });
+    });
+} );
+</script>
+			
+		</body>
+	</html>
