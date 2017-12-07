@@ -90,7 +90,7 @@ async.series([
 		
       var cell = cells[0];
       // console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
-	  response.send(cell);
+	  // response.send(cells);
 	 response.render('pages/sheet',{title:'post',data:cells, row:5})	
 
       // cells have a value, numericValue, and formula
