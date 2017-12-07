@@ -36,7 +36,7 @@
 						</tr>
 					</table>
 				</div>
-				<!--a class="save" href="javascript:void(0);">Save</a-->
+				<a class="save" href="javascript:void(0);">Save</a>
 				<% } %>
 			</div>
 			
@@ -44,7 +44,7 @@
 			
 $(document).ready(function() {
  $('table').SetEditable();
-         $('#example').dataTable();
+         <!-- $('#example').dataTable(); -->
  $(".save").click(function() {
  $("table").find('tr').each(function (i, el) {
         var $tds = $(this).find('td'),
