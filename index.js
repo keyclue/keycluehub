@@ -90,6 +90,7 @@ async.series([
 		
       var cell = cells[0];
       // console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
+	  response.send(cell);
 	 response.render('pages/sheet',{title:'post',data:cells, row:5})	
 
       // cells have a value, numericValue, and formula
@@ -213,7 +214,7 @@ async.series([
 		
       var cell = cells[1];
       console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
-	  response.send(cells);
+	  response.send(cell);
 
       // cells have a value, numericValue, and formula
       cell.value == '1'
