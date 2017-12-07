@@ -28,7 +28,7 @@
 
 
 	  .in-input input {
-    width: 50%;
+     width: 50%;
 }
 .in-btn {
     text-align: center;
@@ -36,6 +36,7 @@
 }
 .in-btn input {
     padding: 10px 28px 10px 29px;
+    margin-bottom: 20px;
 }
 .in-input input {
     width: 50%;
@@ -44,4 +45,8 @@
 .in-input {
     padding-top: 15%;
 }
-
+.scrool {
+    width: 100%;
+    height: 600px;
+    overflow: scroll;
+}
