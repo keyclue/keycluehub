@@ -18,6 +18,42 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
+app.all('/login', function(request, response) {
+ if(request.method==='POST'){
+	response.redirect('pages/home')
+ }else{
+	response.render('pages/login')
+ 
+ }
+});
+
+app.all('/home', function(request, response) {
+ 
+	response.render('pages/home')
+ 
+});
+app.all('/collection_view', function(request, response) {
+ 
+	response.render('pages/collection_view')
+ 
+});
+
+app.all('/brands', function(request, response) {
+ 
+	response.render('pages/brand')
+ 
+});
+
+app.all('/upload', function(request, response) {
+ 
+	response.render('pages/upload')
+ 
+});
+app.all('/dashboard', function(request, response) {
+ 
+	response.render('pages/dashboard')
+ 
+});
 app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
 });

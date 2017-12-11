@@ -21,19 +21,62 @@
 				<% if(data != ""){ %>
 				<div class="scrool">
 					<table id = "example" class="table table-bordered">
+					<thead>
+					<tr>
+						<th>SPU </th>
+						<th>SKU </th>
+						<th>BARCODE NUMNER </th>
+						<th>BRAND </th>
+						<th class=""> 
+					
+						<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+            </th>
+					
+						<th>TAG PRICE </th>
+						<th>SALE PRICE </th>
+						<th>IMAGE </th>
+						<th>FABRIC </th>
+						<th>HS CODE </th>
+						<th>(Tmall only) </th>
+						<th>(Tmall only) </th>
+						<th>(Tmall only) </th>
+						<th>(Tmall only) </th>
+						<th>(Tmall only) </th>
+						<th>MADE IN </th>
+						<th>WEIGHT(kg) </th>
+						<th>HOW TO WASH </th>
+						<th>SELLING POINT (description) </th>
+						<th>PRODUCT PRICE </th>
+						<th>SHIPPING FEE </th>
+						<th>TOTAL PRICE(U+V) </th>
+						<th>TOTAL PRICE(U+V) </th>
+					</tr>
+					</thead>
+					<tbody>
 						<tr>
 						<% data.forEach(function(r, index) { %>
 																					
-							<% if(index > 0 && index % 23 == 0){ %>
+							<% if(index > 23 && index % 23 == 0){ %>
 						</tr><tr>
 							<% } %>
 							<% if(index < 23){ %>
-								<th><%= r.value %> </th>
+
 							<% }else{ %>
 								<td><%= r.value %> </td>
 							<% } %>
 						<% }); %>
 						</tr>
+					</tbody>
 					</table>
 				</div>
 				<a class="save" href="javascript:void(0);">Save</a>
@@ -44,7 +87,7 @@
 			
 $(document).ready(function() {
  $('table').SetEditable();
-         <!-- $('#example').dataTable(); -->
+         <!-- $('#example').dataTable();  -->
  $(".save").click(function() {
  $("table").find('tr').each(function (i, el) {
         var $tds = $(this).find('td'),
