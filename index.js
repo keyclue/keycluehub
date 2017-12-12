@@ -21,7 +21,7 @@ app.get('/', function(request, response) {
 
 app.get('/test_db', function(request, response) {
     var http = require ('http');         // For serving a basic web page.
-	response.send("hii----");
+	// response.send("hii----");
 
     // Here we find an appropriate database to connect to, defaulting to
     // localhost if we don't find one.
