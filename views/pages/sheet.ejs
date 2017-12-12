@@ -4,8 +4,10 @@
 			<% include ../partials/header.ejs %>
 		</head>
 		<body>
+		<div class="radio">
 			<input type="radio" name="r1" onclick="show(this.value);" value="g_sheet" checked />Google Sheet
 			<input type="radio" name="r1" onclick="show(this.value);"  value="csv"/>CSV
+			</div>
 			<form id="g_sheet" action="" name="form" method="post">
 				<div class="col-lg-12">
 				<div class="in-input">
