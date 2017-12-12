@@ -74,8 +74,8 @@ app.all('/login', function(request, response) {
                        response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
                    }
                }else{
-                   request.session.errors = [{'msg':'Invalid email id or password'}];
-                   response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+                   // request.session.errors = [{'msg':'Invalid email id or password'}];
+                   response.render('pages/login',{title:'Login',success:false,errors:[{'msg':'Invalid email id or password'}]});
                }
 
             }	);
