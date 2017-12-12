@@ -29,7 +29,7 @@ app.get('/test_db', function(request, response) {
     process.env.MONGOHQ_URL ||
     'mongodb://localhost/HelloMongoose';
 
-    
+    console.log("uri"+uristring);
     mongoose.connect(uristring, function (err, res) {
       if (err) {
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
