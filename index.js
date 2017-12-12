@@ -36,22 +36,22 @@ app.get('/', function(request, response) {
 
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
-	 var schema = {
-            'email': {
-                notEmpty: {errorMessage:'Email id is required'},
-                isEmail : {errorMessage:'Email id is invalid'}
-            },
-            'password':{
-                notEmpty: {errorMessage:'Password field is required'}
-            }
-        };
-        request.check(schema);
-        var errors = request.validationErrors();
-        if(errors){
-            request.session.errors = errors;
-            console.log("validation error "+JSON.stringify(errors));
-            response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
-        }else{
+	 // var schema = {
+            // 'email': {
+                // notEmpty: {errorMessage:'Email id is required'},
+                // isEmail : {errorMessage:'Email id is invalid'}
+            // },
+            // 'password':{
+                // notEmpty: {errorMessage:'Password field is required'}
+            // }
+        // };
+        // request.check(schema);
+        // var errors = request.validationErrors();
+        // if(errors){
+            // request.session.errors = errors;
+            // console.log("validation error "+JSON.stringify(errors));
+            // response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+        // }else{
             Admin.findOne({email:email}, function (error, success) {
                if(error){
                     console.log("error : "+error);
@@ -77,7 +77,7 @@ app.all('/login', function(request, response) {
                }
 
             });
-        }
+        // }
 
  }else{
 	response.render('pages/login',{errors:""})
