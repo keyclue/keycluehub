@@ -30,9 +30,9 @@ app.get('/test_db', function(request, response) {
     console.log("uri"+uristring);
     mongoose.connect(uristring, function (err, res) {
       if (err) {
-      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      response.send ('ERROR connecting to: ' + uristring + '. ' + err);
       } else {
-      console.log ('Succeeded connected to: ' + uristring);
+      response.send ('Succeeded connected to: ' + uristring);
       }
     });
 });
