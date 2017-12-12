@@ -63,12 +63,12 @@ app.all('/login', function(request, response) {
                    console.log("success1");
                    if(success.password===password){
                    // if(decrypt(success.password)===password){
-                       request.session.email 		= request.body.email;
-                       request.session._id 		    = success._id;
-                       request.session.admin_name 	= request.body.name;
-                       request.session.adminUser	= success;
+                       // request.session.email 		= request.body.email;
+                       // request.session._id 		    = success._id;
+                       // request.session.admin_name 	= request.body.name;
+                       // request.session.adminUser	= success;
 
-                       response.redirect('/pages/home');
+                       response.redirect('home');
                    }else{
                        request.session.errors = [{'msg':'Invalid email id or password'}];
                        response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
