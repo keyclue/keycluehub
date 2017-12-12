@@ -38,43 +38,78 @@
 					<table id = "example" class="table table-bordered">
 					<thead>
 					<tr>
-						<th>SPU </th>
-						<th>SKU </th>
-						<th>BARCODE NUMNER </th>
-						<th>BRAND </th>
+						<th><select id="dropdown1" style="width: 100%;">
+						  <option>SPU</option>
+						</select> </th>
+						<th><select id="dropdown2" style="width: 100%;">
+						  <option>SKU</option>
+						</select> </th>
+						<th><select id="dropdown3" style="width: 100%;">
+						  <option>BARCODE NUMBER</option>
+						</select> </th>
+						<th><select id="dropdown4" style="width: 100%;">
+						  <option>BRAND</option>
+						</select> </th>
 						<th class=""> 
+						<select id="dropdown5" style="width: 100%;">
+						  <option>PRODUCT NAME</option>
+						</select>
+						</th>
 					
-						<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-            </th>
-					
-						<th>TAG PRICE </th>
-						<th>SALE PRICE </th>
-						<th>IMAGE </th>
-						<th>FABRIC </th>
-						<th>HS CODE </th>
-						<th>(Tmall only) </th>
-						<th>(Tmall only) </th>
-						<th>(Tmall only) </th>
-						<th>(Tmall only) </th>
-						<th>(Tmall only) </th>
-						<th>MADE IN </th>
-						<th>WEIGHT(kg) </th>
-						<th>HOW TO WASH </th>
-						<th>SELLING POINT (description) </th>
-						<th>PRODUCT PRICE </th>
-						<th>SHIPPING FEE </th>
-						<th>TOTAL PRICE(U+V) </th>
-						<th>TOTAL PRICE(U+V) </th>
+						<th><select id="dropdown6" style="width: 100%;">
+						  <option>TAG PRICE</option>
+						</select> </th>
+						<th><select id="dropdown7" style="width: 100%;">
+						  <option>SALE PRICE</option>
+						</select> </th>
+						<th><select id="dropdown8" style="width: 100%;">
+						  <option>IMAGE</option>
+						</select> </th>
+						<th><select id="dropdown9" style="width: 100%;">
+						  <option>FABRIC</option>
+						</select> </th>
+						<th><select id="dropdown10" style="width: 100%;">
+						  <option>HS CODE</option>
+						</select> </th>
+						<th><select id="dropdown11" style="width: 100%;">
+						  <option>(Tmall only)</option>
+						</select> </th>
+						<th><select id="dropdown12" style="width: 100%;">
+						  <option>(Tmall only)</option>
+						</select> </th>
+						<th><select id="dropdown13" style="width: 100%;">
+						  <option>(Tmall only)</option>
+						</select> </th>
+						<th><select id="dropdown14" style="width: 100%;">
+						  <option>(Tmall only)2</option>
+						</select> </th>
+						<th><select id="dropdown15" style="width: 100%;">
+						  <option>(Tmall only)3</option>
+						</select> </th>
+						<th><select id="dropdown16" style="width: 100%;">
+						  <option>MADE IN</option>
+						</select> </th>
+						<th><select id="dropdown17" style="width: 100%;">
+						  <option>WEIGHT(kg)</option>
+						</select> </th>
+						<th><select id="dropdown18" style="width: 100%;">
+						  <option>HOW TO WASH</option>
+						</select> </th>
+						<th><select id="dropdown19" style="width: 100%;">
+						  <option>SELLING POINT (description)</option>
+						</select> </th>
+						<th><select id="dropdown20" style="width: 100%;">
+						  <option>PRODUCT PRICE</option>
+						</select> </th>
+						<th><select id="dropdown21" style="width: 100%;">
+						  <option>SHIPPING FEE</option>
+						</select> </th>
+						<th><select id="dropdown22" style="width: 100%;">
+						  <option>TOTAL PRICE(U+V)</option>
+						</select> </th>
+						<th><select id="dropdown23" style="width: 100%;">
+						  <option>TOTAL PRICE(U+V)</option>
+						</select> </th>
 					</tr>
 					</thead>
 					<tbody>
@@ -100,37 +135,64 @@
 			
 			<script>
 			
-$(document).ready(function() {
- $('table').SetEditable();
-         <!-- $('#example').dataTable();  -->
- $(".save").click(function() {
- $("table").find('tr').each(function (i, el) {
-        var $tds = $(this).find('td'),
-            productId = $tds.eq(0).text(),
-            product   = $tds.eq(1).text(),
-            Quantity  = $tds.eq(2).text(),
-            brand     = $tds.eq(3).text(),
-            p_name    = $tds.eq(4).text();
-        // do something with productId, product, Quantity
-	  alert('Row ' + (i + 1) + ':\nSPU: ' + productId
-              + '\nSKU: ' + product
-              + '\nBarcodeNo: ' + Quantity
-              + '\nBrand: ' + brand
-              + '\nProduct Name: ' + p_name
-			  
-			  );
-    });
-    });
-} );
-	function show(val){
-		if(val == "csv"){
-			$("#csv").show();
-			$("#g_sheet").hide();
-		}else{
-			$("#csv").hide();
-			$("#g_sheet").show();
+		$(document).ready(function() {
+			$('table').SetEditable();
+			<!-- $('#example').dataTable();  -->
+			var values = $('th > select option:selected').map(function() {
+				return this.value;
+			}).toArray();
+
+			var hasDups = !values.every(function(v,i) {
+			alert("v"+v+"-----i"+i);
+				return values.indexOf(v) == i;
+			});
+
+			$(".save").click(function() {
+				<!-- $('form').submit(function(e) { -->
+				alert(hasDups);
+				if (hasDups){
+					$("table").find('tr').each(function (i, el) {
+						var $ths  = $( "th > select option:selected" );
+						var $tds  = $(this).find('td');
+						productId = $tds.eq(0).text(),
+						product   = $tds.eq(1).text(),
+						Quantity  = $tds.eq(2).text(),
+						brand     = $tds.eq(3).text(),
+						p_name    = $tds.eq(4).text();
+						// do something with productId, product, Quantity
+						alert('Row ' + (i + 1) + ':\n'+$ths.eq(0).text()+': ' + productId
+						+ '\n'+$ths.eq(1).text()+': ' + product
+						+ '\n'+$ths.eq(2).text()+': ' + Quantity
+						+ '\n'+$ths.eq(3).text()+': ' + brand
+						+ '\n'+$ths.eq(4).text()+': ' + p_name
+						);
+					});
+				}else{
+					alert("Two or more column have same headings.Heading must be unique");
+				}
+			});
+			accountName = ["SPU", "SKU", "BARCODE NUMBER", "BRAND", "PRODUCT NAME", "TAG PRICE", "SALE PRICE", "IMAGE", "FABRIC", "HS CODE", "(Tmall only)", "(Tmall only)", "(Tmall only)",	"(Tmall only)2", "(Tmall only)3",	"MADE IN", "WEIGHT(kg)", "HOW TO WASH",	"SELLING POINT (description)", "PRODUCT PRICE",	"SHIPPING FEE",	"TOTAL PRICE(U+V)", "TOTAL PRICE(U+V)" ];
+			var loop = $("th").length;
+			for(var i =1;i< loop;i++){
+				var selected = $("#dropdown"+i).val();
+				$("#dropdown"+i).empty();
+				$.each(accountName, function( key, value) {   
+					if(selected == value){ var select = 'selected';}else{ var select = '';}
+					$('#dropdown'+i).append($("<option "+ select+" ></option>")
+									.attr("value",value)
+									.text(value)); 
+				});
+			}	
+		} );
+		function show(val){
+			if(val == "csv"){
+				$("#csv").show();
+				$("#g_sheet").hide();
+			}else{
+				$("#csv").hide();
+				$("#g_sheet").show();
+			}
 		}
-	}
 </script>
 			
 		</body>
