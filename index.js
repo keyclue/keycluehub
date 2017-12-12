@@ -19,24 +19,66 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
   response.render('pages/index')
 });
-app.get('/create_admin', function(request, response) {
+/* app.get('/create_admin', function(request, response) {
     var Obj = new Admin();
-                   Obj.email        = "admin@gmail.com";
-                   Obj.password       = "Singh!@#";
-				    Obj.save(function(error,success) {
-                       if(error){
-                           console.log("error "+error);
-                       }else{
-						   response.send("user created");
-					   }
-					});
-});
+   Obj.email        = "admin@gmail.com";
+   Obj.password       = "Singh!@#";
+	Obj.save(function(error,success) {
+	   if(error){
+		   console.log("error "+error);
+	   }else{
+		   response.send("user created");
+	   }
+	});
+}); */
 
 
 
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
-	response.redirect('pages/home')
+	 var schema = {
+            'email': {
+                notEmpty: {errorMessage:'Email id is required'},
+                isEmail : {errorMessage:'Email id is invalid'}
+            },
+            'password':{
+                notEmpty: {errorMessage:'Password field is required'}
+            }
+        };
+        request.check(schema);
+        var errors = request.validationErrors();
+        if(errors){
+            request.session.errors = errors;
+            console.log("validation error "+JSON.stringify(errors));
+            response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+        }else{
+            Admin.findOne({email:email}, function (error, success) {
+               if(error){
+                    console.log("error : "+error);
+               }
+               console.log("success"+success);
+               if(success!=null){
+                   console.log("success1");
+                   if(success.password===password){
+                   // if(decrypt(success.password)===password){
+                       request.session.email 		= request.body.email;
+                       request.session._id 		    = success._id;
+                       request.session.admin_name 	= request.body.name;
+                       request.session.adminUser	= success;
+
+                       response.redirect('/pages/home');
+                   }else{
+                       request.session.errors = [{'msg':'Invalid email id or password'}];
+                       response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+                   }
+               }else{
+                   request.session.errors = [{'msg':'Invalid email id or password'}];
+                   response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+               }
+
+            });
+        }
+
  }else{
 	response.render('pages/login')
  

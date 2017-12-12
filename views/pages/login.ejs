@@ -22,7 +22,7 @@
     </script>
   </head>
   <body>
-  <form action="/home" method="post">
+  <form action="/" method="post">
     <div id="base" class="">
 
       <!-- Unnamed (Rectangle) -->
@@ -37,15 +37,23 @@
       <div id="u1" class="ax_default image">
         <img id="u1_img" class="img " src="images/home/u1.png"/>
       </div>
+	  
+																					
 
+							<% if(error){ %>
+                      <% error.forEach(function(r, index) { %>
+                            <div class="alert alert-danger"><% r.msg %></div>
+                        
+                    <% } %>
+                    <% } %>
       <!-- Unnamed (Text Field) -->
       <div id="u2" class="ax_default text_field">
-        <input id="u2_input" type="text" value="" placeholder="ID"/>
+        <input id="u2_input" type="text" name="email" value="" placeholder="Email ID"/>
       </div>
 
       <!-- Unnamed (Text Field) -->
       <div id="u3" class="ax_default text_field">
-        <input id="u3_input" type="text" value="" placeholder="PASSWORD"/>
+        <input id="u3_input" type="text" value="" name="password" placeholder="PASSWORD"/>
       </div>
 	  
 	  <div id="u4" class="ax_default text_field">
