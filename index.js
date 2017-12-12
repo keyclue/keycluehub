@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require ("mongoose"); // The reason for this demo.
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -20,7 +21,6 @@ app.get('/', function(request, response) {
 
 app.get('/test_db', function(request, response) {
     // var http = require ('http');         // For serving a basic web page.
-    // var mongoose = require ("mongoose"); // The reason for this demo.
 	response.send("hii----");
 
     // Here we find an appropriate database to connect to, defaulting to
