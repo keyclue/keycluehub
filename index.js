@@ -80,7 +80,7 @@ app.all('/login', function(request, response) {
         }
 
  }else{
-	response.render('pages/login')
+	response.render('pages/login',{errors:""})
  
  }
 });
