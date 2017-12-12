@@ -4,11 +4,24 @@
 			<% include ../partials/header.ejs %>
 		</head>
 		<body>
-			
-			<form action="" name="form" method="post">
+			<input type="radio" name="r1" onclick="show(this.value);" value="g_sheet" checked />Google Sheet
+			<input type="radio" name="r1" onclick="show(this.value);"  value="csv"/>CSV
+			<form id="g_sheet" action="" name="form" method="post">
 				<div class="col-lg-12">
 				<div class="in-input">
 					<input  class="form-control " type="text" Placeholder="Paste your Spreadsheet ID here" name="sheet_url" />
+				</div>
+				
+				
+				<div class="in-btn">
+					<input class="btn btn-primary" type="submit" name="submit" value="sync">
+				</div>
+				</div>
+			</form>
+			<form id="csv" style="display:none;"action="" name="form" method="post">
+				<div class="col-lg-12">
+				<div class="in-input">
+					<input  class=" " type="File" Placeholder="Paste your Spreadsheet ID here" name="csv" />
 				</div>
 				
 				
@@ -107,6 +120,15 @@ $(document).ready(function() {
     });
     });
 } );
+	function show(val){
+		if(val == "csv"){
+			$("#csv").show();
+			$("#g_sheet").hide();
+		}else{
+			$("#csv").hide();
+			$("#g_sheet").show();
+		}
+	}
 </script>
 			
 		</body>
