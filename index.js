@@ -70,8 +70,8 @@ app.all('/login', function(request, response) {
 
                        response.redirect('home');
                    }else{
-                       request.session.errors = [{'msg':'Invalid email id or password'}];
-                       response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+                       // request.session.errors = [{'msg':'Invalid email id or password'}];
+                       response.render('pages/login',{title:'Login',success:false,errors:"Invalid email or password"});
                    }
                }else{
                    // request.session.errors = [{'msg':'Invalid email id or password'}];
