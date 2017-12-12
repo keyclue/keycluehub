@@ -40,7 +40,7 @@
 	  
 																					
 
-							<% if(error){ %>
+							<% if(error != undefined){ %>
                       <% error.forEach(function(r, index) { %>
                             <div class="alert alert-danger"><% r.msg %></div>
                         
