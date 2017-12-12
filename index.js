@@ -19,6 +19,18 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
   response.render('pages/index')
 });
+app.get('/create_admin', function(request, response) {
+    var Obj = new Admin();
+                   Obj.email        = "admin@gmail.com";
+                   Obj.password       = "Singh!@#";
+				    Obj.save(function(error,success) {
+                       if(error){
+                           console.log("error "+error);
+                       }else{
+						   response.send("user created");
+					   }
+					});
+});
 
 
 
