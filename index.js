@@ -19,6 +19,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/test_db', function(request, response) {
+	response.send("hii");
     var http = require ('http');         // For serving a basic web page.
     var mongoose = require ("mongoose"); // The reason for this demo.
 
