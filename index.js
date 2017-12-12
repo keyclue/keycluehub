@@ -1,7 +1,7 @@
 var express = require('express');
-var mongoose = require ("mongoose"); // The reason for this demo.
-var app = express();
 
+var app = express();
+require('./config/database');
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -19,23 +19,7 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
-app.get('/test_db', function(request, response) {
-    var http = require ('http');         // For serving a basic web page.
-	// response.send("hii----");
 
-    // Here we find an appropriate database to connect to, defaulting to
-    // localhost if we don't find one.
-    var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
-
-    console.log("uri"+uristring);
-    mongoose.connect(uristring, function (err, res) {
-      if (err) {
-      response.send ('ERROR connecting to: ' + uristring + '. ' + err);
-      } else {
-      response.send ('Succeeded connected to: ' + uristring);
-      }
-    });
-});
 
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
