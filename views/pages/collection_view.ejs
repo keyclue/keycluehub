@@ -1,62 +1,34 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Collection View</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
-    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
-    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/collection_view/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
-    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
-    <script src="resources/scripts/prototypePre.js"></script>
-    <script src="data/document.js"></script>
-    <script src="resources/scripts/prototypePost.js"></script>
-    <script src="files/collection_view/data.js"></script>
-    <script type="text/javascript">
-      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
-      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
-    </script>
-  </head>
-  <body>
-  <% include ../partials/header.ejs %>
+	<html>
+		<head>
+			<% include ../partials/header.ejs %>
+		</head>
+		<body>
 	<% include ../partials/nav.ejs %>
-    <div id="base" class="">
-
-      <!-- Unnamed (Rectangle) -->
-      <div id="u4" class="ax_default heading_1">
+		 <div id="u4" class="ax_default heading_1">
         <div id="u4_div" class=""></div>
         <div id="u4_text" class="text ">
           <p><span>My Collections: My_ID</span></p>
         </div>
       </div>
-	
-      <!-- Unnamed (Rectangle) [footnote] -->
-      <div id="u4_ann" class="annotation"></div>
-
-		
-
-     
-
-      <!-- Unnamed (HTML Button) [footnote] -->
-      <div id="u38_ann" class="annotation"></div>
-
-      <!-- Unnamed (Text Field) -->
-      <div id="u39" class="ax_default text_field">
-        <input id="u39_input" type="text" value="New collection name "/>
-      </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <div id="u40" class="ax_default html_button">
-        <input id="u40_input" type="submit" value="+Create collection"/>
-      </div>
-
-     
-	  <table class="table table-boldered">
-		  <thead>
+			<form id="g_sheet" action="" name="form" method="post">
+				<div class="col-lg-12">
+				<div class="in-input">
+					<input  class="form-control " type="text" Placeholder="New collection name" name="col_name" />
+				</div>
+				
+				
+				<div class="in-btn">
+					<input class="btn btn-primary" type="submit" name="submit" value="+Craete Collection">
+				</div>
+				</div>
+			</form>
+			
+			<div class="container">
+				
+				<div class="scrool">
+					<table id = "example" class="table table-bordered">
+					<thead>
 			  <tr>
 				<th>Collection</th><th colspan="6">Actions</th>
 			  </tr>
@@ -72,8 +44,22 @@
 		  <td>Duplicate</td>
 		  </tr>
 		  </tbody>
-	  </table>
-	  
-    </div>
-  </body>
-</html>
+					</table>
+				</div>
+				
+			</div>
+			
+			<script>
+			
+		$(document).ready(function() {
+			<!-- $('table').SetEditable(); -->
+			$('#example').dataTable(); 
+			
+		} );
+		
+</script>
+			
+		</body>
+	</html>
+
+
