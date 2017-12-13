@@ -116,8 +116,8 @@ mongoose.connect(uristring, function (err, db) {
    console.log ('Succeeded connected to: ' + uristring);
   db.collection("admins").find({}).toArray(function(err, result) {
     if (err) throw err;
-    response.send(result);
-	// response.render('pages/collection_view',{url:"collection_view"})
+    console.log("respone"+result);
+	response.render('pages/collection_view',{url:"collection_view"})
    
   });
       }
