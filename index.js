@@ -193,7 +193,7 @@ app.all('/sheet', function(request, response) {
 					var cell = cells[0];
 					// console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
 					// response.send(cells);
-					response.render('pages/sheet',{title:'post',data:cells, row:5})	
+					response.render('pages/sheet',{url:"collection_view", title:'post',data:cells, row:5})	
 					// cells have a value, numericValue, and formula
 					cell.value == '1'
 					cell.numericValue == 1;
@@ -235,7 +235,7 @@ app.all('/sheet', function(request, response) {
 			}
 		});
 	}else{
-		response.render('pages/sheet',{title:'get',data:""})	
+		response.render('pages/sheet',{url:"collection_view", title:'get',data:""})	
 	}
 });
 app.post('/get_gsheet_data', function(request, response) {
