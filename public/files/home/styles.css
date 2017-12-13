@@ -112,6 +112,14 @@
 	width: 300px;
 	height: 25px;
 }
+#uerr {
+	border-width: 0px;
+	position: absolute;
+	left: 457px;
+	top: 340px;
+	width: 300px;
+	height: 25px;
+}
 #u3_input {
   position:absolute;
   left:0px;
