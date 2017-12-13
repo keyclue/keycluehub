@@ -5,6 +5,6 @@ var Auth = function isUserAuthenticated(req,res,next){
         return next();
     }
     // console.log("PORT "+app.get('port'));
-    res.redirect("");
+    res.redirect("/login");
 }
 module.exports = Auth; 
