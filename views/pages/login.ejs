@@ -41,10 +41,10 @@
 																					
 
 							<% if(errors != ""){ %>
-                      <% errors.forEach(function(r, index) { %>
-                            <div class="alert alert-danger"><% index %>-<% r.value %></div>
+                    
+                            <div class="alert alert-danger"><% errors.msg %></div>
                         
-                    <% }); %>
+                 
                     <% } %>
       <!-- Unnamed (Text Field) -->
       <div id="u2" class="ax_default text_field">
