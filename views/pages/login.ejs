@@ -37,15 +37,9 @@
       <div id="u1" class="ax_default image">
         <img id="u1_img" class="img " src="images/home/u1.png"/>
       </div>
-	  
-																					
-
-							<% if(errors != ""){ %>
-                    
-                            <div id="uerr" class="alert alert-danger"><%= errors %></div>
-                        
-                 
-                    <% } %>
+	  		<% if(errors != ""){ %>
+				<div id="uerr" class="alert alert-danger"><%= errors %></div>
+			<% } %>
       <!-- Unnamed (Text Field) -->
       <div id="u2" class="ax_default text_field">
         <input id="u2_input" type="text" name="email" value="" placeholder="Email ID"/>
@@ -53,7 +47,7 @@
 
       <!-- Unnamed (Text Field) -->
       <div id="u3" class="ax_default text_field">
-        <input id="u3_input" type="text" value="" name="password" placeholder="PASSWORD"/>
+        <input id="u3_input" type="password" value="" name="password" placeholder="PASSWORD"/>
       </div>
 	  
 	  <div id="u4" class="ax_default text_field">
