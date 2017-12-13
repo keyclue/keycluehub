@@ -1,7 +1,7 @@
 var express = require('express');
 var expressSession = require('express-session');
 var app = express();
-require('./config/database');
+var db = require('./config/database');
 var Admin        = require('./model/admins');
 var Auth   = require('./middleware/auth');
 app.set('port', (process.env.PORT || 5000));
@@ -104,19 +104,23 @@ app.all('/home', Auth, function(request, response) {
 	response.render('pages/home')
  
 });
-app.all('/collection_view', function(request, response) {
- 
+app.all('/collection_view', Auth, function(request, response) {
+  db.collection("admins").find({}).toArray(function(err, result) {
+    if (err) throw err;
+    response.send(result);
+   
+  });
 	response.render('pages/collection_view',{url:"collection_view"})
  
 });
 
-app.all('/brands', function(request, response) {
+app.all('/brands', Auth, function(request, response) {
  
 	response.render('pages/brand',{url:"brands"})
  
 });
 
-app.all('/upload', function(request, response) {
+app.all('/upload', Auth,  function(request, response) {
  
 	response.render('pages/upload',{url:"upload"})
  
@@ -130,7 +134,7 @@ app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
 });
 
-app.all('/sheet', function(request, response) {
+app.all('/sheet', Auth, function(request, response) {
 	 if(request.method==='POST'){
 		var log_id 		      = request.body.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
