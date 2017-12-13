@@ -35,7 +35,16 @@ app.get('/', function(request, response) {
 	});
 }); */
 
+app.get('/logout',function(request,response){
 
+        request.session.destroy(function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                response.redirect('/login');
+            }
+        });
+    });
 
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
