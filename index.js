@@ -106,19 +106,19 @@ app.all('/home', Auth, function(request, response) {
 });
 app.all('/collection_view', function(request, response) {
  
-	response.render('pages/collection_view')
+	response.render('pages/collection_view',{url:"collection_view"})
  
 });
 
 app.all('/brands', function(request, response) {
  
-	response.render('pages/brand')
+	response.render('pages/brand',{url:"brands"})
  
 });
 
 app.all('/upload', function(request, response) {
  
-	response.render('pages/upload')
+	response.render('pages/upload',{url:"upload"})
  
 });
 app.all('/dashboard', function(request, response) {
