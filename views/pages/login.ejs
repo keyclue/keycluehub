@@ -42,7 +42,7 @@
 
 							<% if(errors != ""){ %>
                       <% errors.forEach(function(r, index) { %>
-                            <div class="alert alert-danger"><% r.value %></div>
+                            <div class="alert alert-danger"><% index %>-<% r.value %></div>
                         
                     <% }); %>
                     <% } %>
