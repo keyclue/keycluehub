@@ -4,6 +4,7 @@ var app = express();
 var db = require('./config/database');
 var Admin        = require('./model/admins');
 var Auth   = require('./middleware/auth');
+	var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -105,11 +106,19 @@ app.all('/home', Auth, function(request, response) {
  
 });
 app.all('/collection_view', Auth, function(request, response) {
+mongoose.connect(uristring, function (err, db) {
+      if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+     
+   console.log ('Succeeded connected to: ' + uristring);
   db.collection("admins").find({}).toArray(function(err, result) {
     if (err) throw err;
     response.send(result);
    
   });
+      }
+    });
 	response.render('pages/collection_view',{url:"collection_view"})
  
 });
