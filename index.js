@@ -117,25 +117,22 @@ app.all('/home', Auth, function(request, response) {
  
 });
 app.all('/collection_view', function(request, response) {
-mongo.connect(uristring, function (err, db) {
+	mongo.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();
-      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-	  respone.send(err);
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
       } else {
-     
-   console.log ('Succeeded connected to-: ' + uristring);
-     db.collection("admins", function(err, collection) {
-		 collection.find({}).toArray( function(error,result) {
- 
-    if (error){
-		
-	  respone.send(err);
-	} else{
-    console.log("respone"+result);
-	db.close();
-	response.render('pages/collection_view',{url:"collection_view"})
-	}
+		console.log ('Succeeded connected to-: ' + uristring);
+		db.collection("admins", function(err, collection) {
+			collection.find({}).toArray( function(error,result) {
+			if (error){
+				respone.send(err);
+			} else{
+				console.log("respone"+result);
+				db.close();
+				response.render('pages/collection_view',{url:"collection_view",data:result})
+			}
    
   });
   });
