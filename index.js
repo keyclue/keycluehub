@@ -116,7 +116,7 @@ mongodb.connect(uristring, function (err, db) {
       } else {
      
    console.log ('Succeeded connected to: ' + uristring);
-  db.collection("admins").find({}).toArray(function(err, result) {
+  db.collection("admins").find({},function(err, result) {
     if (err){
 		
 	  respone.send(err);
