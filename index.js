@@ -1,5 +1,5 @@
 var express = require('express');
-
+var expressSession = require('express-session');
 var app = express();
 require('./config/database');
 var Admin        = require('./model/admins');
@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({
    extended: false
 }));
 app.use(bodyParser.json());
+app.use(expressSession({secret:'max',saveUninitialized:false,resave:false,
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -63,19 +64,19 @@ app.all('/login', function(request, response) {
                    console.log("success1");
                    if(success.password===password){
                    // if(decrypt(success.password)===password){
-                       // request.session.email 		= request.body.email;
-                       // request.session._id 		    = success._id;
-                       // request.session.admin_name 	= request.body.name;
-                       // request.session.adminUser	= success;
+                       request.session.email 		= request.body.email;
+                       request.session._id 		    = success._id;
+                       request.session.admin_name 	= request.body.name;
+                       request.session.adminUser	= success;
 
                        response.redirect('home');
                    }else{
-                       // request.session.errors = [{'msg':'Invalid email id or password'}];
-                       response.render('pages/login',{title:'Login',success:false,errors:"Invalid email or password"});
+                       request.session.errors = [{'msg':'Invalid email id or password'}];
+                       response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
                    }
                }else{
-                   // request.session.errors = [{'msg':'Invalid email id or password'}];
-                   response.render('pages/login',{title:'Login',success:false,errors:[{'msg':'Invalid email id or password'}]});
+                   request.session.errors = [{'msg':'Invalid email id or password'}];
+                   response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
                }
 
             }	);
