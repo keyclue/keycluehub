@@ -4,7 +4,16 @@ var app = express();
 var db = require('./config/database');
 // var Admin        = require('./model/admins');
 var mongoose = require('mongoose');
-var mongodb = require('mongodb').MongoClient;
+var mongo = require('mongodb');
+// var Server = mongo.Server, Db = mongo.Db, BSON = mongo.BSONPure;
+// var server = new Server('ds135926.mlab.com', 35926, {auto_reconnect: true});
+// db = new Db('heroku_914rlv3g', server);
+// db.open(function(err, db) {
+    // if(!err) {
+        // console.log("Connected to 'scedule_copy' database");
+    // }
+    // console.log("dbconnection error "+err);
+// });
 var Auth   = require('./middleware/auth');
 	var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
@@ -108,7 +117,7 @@ app.all('/home', Auth, function(request, response) {
  
 });
 app.all('/collection_view', function(request, response) {
-mongodb.connect(uristring, function (err, db) {
+mongo.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
@@ -116,8 +125,10 @@ mongodb.connect(uristring, function (err, db) {
       } else {
      
    console.log ('Succeeded connected to-: ' + uristring);
-  db.collection("admins").find({},function(err, result) {
-    if (err){
+     db.collection("admins", function(err, collection) {
+		 collection.find({}).toArray( function(error,result) {
+ 
+    if (error){
 		
 	  respone.send(err);
 	} else{
@@ -126,6 +137,7 @@ mongodb.connect(uristring, function (err, db) {
 	response.render('pages/collection_view',{url:"collection_view"})
 	}
    
+  });
   });
       }
     });
