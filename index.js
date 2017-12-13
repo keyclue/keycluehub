@@ -2,9 +2,9 @@ var express = require('express');
 var expressSession = require('express-session');
 var app = express();
 var db = require('./config/database');
-var Admin        = require('./model/admins');
+// var Admin        = require('./model/admins');
 var mongoose = require('mongoose');
-// var Auth   = require('./middleware/auth');
+var Auth   = require('./middleware/auth');
 	var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
 
