@@ -109,6 +109,7 @@ app.all('/home', Auth, function(request, response) {
 app.all('/collection_view', function(request, response) {
 mongoose.connect(uristring, function (err, db) {
       if (err) {
+		   db.close();
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
       } else {
      
