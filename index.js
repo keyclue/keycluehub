@@ -117,11 +117,11 @@ mongoose.connect(uristring, function (err, db) {
   db.collection("admins").find({}).toArray(function(err, result) {
     if (err) throw err;
     response.send(result);
+	// response.render('pages/collection_view',{url:"collection_view"})
    
   });
       }
     });
-	response.render('pages/collection_view',{url:"collection_view"})
  
 });
 
