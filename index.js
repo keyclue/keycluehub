@@ -4,6 +4,7 @@ var app = express();
 var db = require('./config/database');
 // var Admin        = require('./model/admins');
 var mongoose = require('mongoose');
+var mongodb = require('mongodb').MongoClient;
 var Auth   = require('./middleware/auth');
 	var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
@@ -107,7 +108,7 @@ app.all('/home', Auth, function(request, response) {
  
 });
 app.all('/collection_view', function(request, response) {
-mongoose.connect(uristring, function (err, db) {
+mongodb.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
