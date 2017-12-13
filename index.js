@@ -3,6 +3,7 @@ var expressSession = require('express-session');
 var app = express();
 require('./config/database');
 var Admin        = require('./model/admins');
+var Auth   = require('./middleware/auth');
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -89,7 +90,7 @@ app.all('/login', function(request, response) {
  }
 });
 
-app.all('/home', function(request, response) {
+app.all('/home', Auth, function(request, response) {
  
 	response.render('pages/home')
  
