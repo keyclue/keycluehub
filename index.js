@@ -111,13 +111,18 @@ mongoose.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+	  respone.send(err);
       } else {
      
    console.log ('Succeeded connected to: ' + uristring);
   db.collection("admins").find({}).toArray(function(err, result) {
-    if (err) throw err;
+    if (err){
+		
+	  respone.send(err);
+	} else{
     console.log("respone"+result);
 	response.render('pages/collection_view',{url:"collection_view"})
+	}
    
   });
       }
