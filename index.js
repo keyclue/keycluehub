@@ -64,8 +64,8 @@ app.all('/login', function(request, response) {
             // console.log("validation error "+JSON.stringify(errors));
             // response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
         // }else{
-			 var email       = request.body.email;
-    var password    = request.body.password;
+			var email       = request.body.email;
+			var password    = request.body.password;
             Admin.findOne({email:email}, function (error, success) {
                if(error){
                     console.log("error : "+error);
@@ -94,7 +94,7 @@ app.all('/login', function(request, response) {
         // }
 
  }else{
-	response.render('pages/login',{errors:""})
+	response.render('pages/login',{errors:"",title:"Login"})
  
  }
 });
