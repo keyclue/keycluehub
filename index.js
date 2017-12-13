@@ -80,7 +80,7 @@ app.all('/login', function(request, response) {
                        request.session.admin_name 	= request.body.name;
                        request.session.adminUser	= success;
 
-                       response.redirect('home');
+                       response.redirect('collection_view');
                    }else{
                        request.session.errors = 'Invalid email id or password';
                        response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
