@@ -124,8 +124,9 @@ app.all('/collection_view', function(request, response) {
 			respone.send(err);
       } else {
 		console.log ('Succeeded connected to-: ' + uristring);
-		db.collection("admins", function(err, collection) {
-			collection.find({}).toArray( function(error,result) {
+		// db.collection("admins", function(err, collection) {
+			db.listCollections().toArray(function(error, result) {
+			// collection.find({}).toArray( function(error,result) {
 			if (error){
 				respone.send(err);
 			} else{
@@ -134,8 +135,8 @@ app.all('/collection_view', function(request, response) {
 				response.render('pages/collection_view',{url:"collection_view",data:result})
 			}
    
-  });
-  });
+  // });
+		});
       }
     });
  
