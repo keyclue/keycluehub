@@ -139,7 +139,9 @@
 		$(document).ready(function() {
 			$('table').SetEditable();
 			<!-- $('#example').dataTable();  -->
-			var values = $('th > select option:selected').map(function() {
+		
+			$(".save").click(function() {
+					var values = $('th > select option:selected').map(function() {
 				return this.value;
 			}).toArray();
 
@@ -148,27 +150,20 @@
 				return values.indexOf(v) == i;
 			});
 
-			$(".save").click(function() {
-				<!-- $('form').submit(function(e) { -->
 				alert(hasDups);
 				if (hasDups){
 					alert("Two or more column have same headings.Heading must be unique");
-					}else{
+				}else{
+				var innerElement = {"SPU":"abc"};
+				var mainArray =[];
+				
  					$("table").find('tr').each(function (i, el) {
 						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
-						productId = $tds.eq(0).text(),
-						product   = $tds.eq(1).text(),
-						Quantity  = $tds.eq(2).text(),
-						brand     = $tds.eq(3).text(),
-						p_name    = $tds.eq(4).text();
-						// do something with productId, product, Quantity
-						alert('Row ' + (i + 1) + ':\n'+$ths.eq(0).text()+': ' + productId
-						+ '\n'+$ths.eq(1).text()+': ' + product
-						+ '\n'+$ths.eq(2).text()+': ' + Quantity
-						+ '\n'+$ths.eq(3).text()+': ' + brand
-						+ '\n'+$ths.eq(4).text()+': ' + p_name
-						);
+						for(k=0;k<4;k++){
+							innerElement.$ths.eq(k).text() = $tds.eq(k).text();
+						}
+						alert(innerElement);
 					});
 				}
 			});
