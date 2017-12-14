@@ -154,16 +154,23 @@
 				if (hasDups){
 					alert("Two or more column have same headings.Heading must be unique");
 				}else{
-				var innerElement = {"SPU":"abc"};
+				
 				var mainArray =[];
 				
  					$("table").find('tr').each(function (i, el) {
 						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
-						for(k=0;k<4;k++){
-							product = $ths.eq(k).text();
-							innerElement.product = $tds.eq(k).text();
-						}
+						<!-- for(k=0;k<4;k++){ -->
+							
+						var	innerElement = { 
+												$ths.eq(0).text() : $tds.eq(0).text(), 
+												$ths.eq(1).text() : $tds.eq(1).text(), 
+												$ths.eq(2).text() : $tds.eq(2).text(), 
+												$ths.eq(3).text() : $tds.eq(3).text(), 
+												$ths.eq(4).text() : $tds.eq(4).text(), 
+											
+											};
+						<!-- } -->
 						alert(JSON.stringify(innerElement));
 					});
 				}
