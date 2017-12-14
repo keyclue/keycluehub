@@ -43,9 +43,9 @@
 		  <% data.forEach(function(r, index) { %>
 		  <% if(r.name.indexOf("product") > -1) { %>
 
-
+<% final_name = r.name.split("_"); %>
 		  <tr>
-		  <td><%= r.name %></td>
+		  <td><%= final_name[1] %></td>
 		  <td><a href="" class="btn-primary btn">Import</a></td>
 		  <td><a href="" class="btn-primary btn">Edit</a></td>
 		  <td><a href="" class="btn-primary btn">Export</a></td>
