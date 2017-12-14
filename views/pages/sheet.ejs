@@ -146,7 +146,7 @@
 			}).toArray();
 
 			var hasDups = !values.every(function(v,i) {
-			alert("v"+v+"-----i"+i);
+			<!-- alert("v"+v+"-----i"+i); -->
 				return values.indexOf(v) == i;
 			});
 
@@ -164,7 +164,7 @@
 							product = $ths.eq(k).text();
 							innerElement.product = $tds.eq(k).text();
 						}
-						alert(innerElement);
+						alert(JSON.stringify(innerElement));
 					});
 				}
 			});
