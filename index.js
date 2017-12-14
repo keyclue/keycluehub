@@ -78,7 +78,14 @@ app.all('/login', function(request, response) {
         // }else{
 			var email       = request.body.email;
 			var password    = request.body.password;
-            Admin.findOne({email:email}, function (error, success) {
+			mongo.connect(uristring, function (err, db) {
+      if (err) {
+		   db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
+      } else {
+		  db.collection("admins", function(err, collection) {
+            collection.findOne({email:email}, function (error, success) {
                if(error){
                     console.log("error : "+error);
                }
@@ -103,6 +110,9 @@ app.all('/login', function(request, response) {
                }
 
             }	);
+            }	);
+	  }
+			});
         // }
 
  }else{
@@ -162,7 +172,7 @@ app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
 });
 
-app.all('/sheet', function(request, response) {
+app.all('/sheet', Auth, function(request, response) {
 	 if(request.method==='POST'){
 		var log_id 		      = request.body.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
