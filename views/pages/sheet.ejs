@@ -161,13 +161,11 @@
 						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
 						<!-- for(k=0;k<4;k++){ -->
-							
+							column = $ths.eq(0).text();
+							value = $tds.eq(0).text();
 						var	innerElement = { 
-												$ths.eq(0).text() : $tds.eq(0).text(), 
-												$ths.eq(1).text() : $tds.eq(1).text(), 
-												$ths.eq(2).text() : $tds.eq(2).text(), 
-												$ths.eq(3).text() : $tds.eq(3).text(), 
-												$ths.eq(4).text() : $tds.eq(4).text()
+												column : value 
+												
 											
 											};
 						<!-- } -->
