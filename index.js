@@ -77,7 +77,7 @@ app.post('/create_collection',function(request,response){
 		}
 	});
 });
-app.post('/delete_collection/:col_name',function(request,response){
+app.get('/delete_collection/:col_name',function(request,response){
 	var col_name  = request.params.col_name;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
