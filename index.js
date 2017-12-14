@@ -162,7 +162,7 @@ app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
 });
 
-app.all('/sheet', Auth, function(request, response) {
+app.all('/sheet', function(request, response) {
 	 if(request.method==='POST'){
 		var log_id 		      = request.body.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
