@@ -161,11 +161,12 @@
 				var mainArray =[];
 				
  					$("table").find('tr').each(function (i, el) {
-						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
+						var $ths  = $( "th > select option:selected" );
 						 for(k=1;k<4;k++){ 
 							column = $ths.eq(k).text();
 							value = $tds.eq(k).text();
+							alert(value);
 							innerElement[column] = value;
 						 
 						 }
