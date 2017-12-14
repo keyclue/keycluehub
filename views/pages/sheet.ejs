@@ -162,7 +162,7 @@
 						var $tds  = $(this).find('td');
 						 for(k=1;k<4;k++){ 
 							column = $ths.eq(k).text();
-							innerElement.column = $tds.eq(k).text();
+							innerElement[column] = $tds.eq(k).text();
 						 
 						 }
 						 mainArray.push(innerElement);
