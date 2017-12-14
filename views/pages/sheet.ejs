@@ -177,7 +177,7 @@
 							value6 = $tds.eq(6).text();
 						var	innerElement = { 
 												column : value, 
-												column1 : value1, 
+												$ths.eq(1).text()	 : value1, 
 												column2 : value2, 
 												column3 : value3, 
 												column4 : value4, 
@@ -188,6 +188,18 @@
 											};
 						<!-- } -->
 						alert(JSON.stringify(innerElement));
+						productId = $tds.eq(0).text(),
+						product   = $tds.eq(1).text(),
+						Quantity  = $tds.eq(2).text(),
+						brand     = $tds.eq(3).text(),
+						p_name    = $tds.eq(4).text();
+						// do something with productId, product, Quantity
+						alert('Row ' + (i + 1) + ':\n'+$ths.eq(0).text()+': ' + productId
+						+ '\n'+$ths.eq(1).text()+': ' + product
+						+ '\n'+$ths.eq(2).text()+': ' + Quantity
+						+ '\n'+$ths.eq(3).text()+': ' + brand
+						+ '\n'+$ths.eq(4).text()+': ' + p_name
+						);
 					});
 				}
 			});
