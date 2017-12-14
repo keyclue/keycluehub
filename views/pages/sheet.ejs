@@ -161,7 +161,8 @@
 						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
 						for(k=0;k<4;k++){
-							innerElement.$ths.eq(k).text() = $tds.eq(k).text();
+							product = $ths.eq(k).text();
+							innerElement.product = $tds.eq(k).text();
 						}
 						alert(innerElement);
 					});
