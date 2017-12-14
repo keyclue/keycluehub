@@ -157,10 +157,10 @@
 				if (hasDups){
 					alert("Two or more column have same headings.Heading must be unique");
 				}else{
-				var innerElement = {};
 				var mainArray =[];
 				
  					$("table").find('tr').each(function (i, el) {
+				var innerElement = {};
 						var $tds  = $(this).find('td');
 						var $ths  = $( "th > select option:selected" );
 						 for(k=1;k<4;k++){ 
