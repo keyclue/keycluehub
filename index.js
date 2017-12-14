@@ -71,7 +71,7 @@ app.get('/create_collection',function(request,response){
 				}else{
 					console.log("Collection created!");
 					db.close();
-					 response.redirect('/sheet/'+col_name);
+					 response.redirect('/sheet/'+col_name);  
 				}
 			});
 		}
