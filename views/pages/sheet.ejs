@@ -165,12 +165,13 @@
 						var $tds  = $(this).find('td');
 						 for(k=1;k<4;k++){ 
 							column = $ths.eq(k).text();
-							innerElement[column] = $tds.eq(k).text();
+							value = $tds.eq(k).text();
+							innerElement[column] = value;
 						 
 						 }
 						 mainArray.push(innerElement);
 							
-						alert(JSON.stringify(mainArray));
+						<!-- alert(JSON.stringify(mainArray)); -->
 						
 					});
 					$('#data').val(JSON.stringify(mainArray));
