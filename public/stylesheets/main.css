@@ -31,7 +31,7 @@
      width: 50%;
 }
 #create_collection{text-align : center}
-.in-input label .error{color:red}
+.in-input label .error{color:red !important; padding-top:5px}
 .in-btn {
     text-align: center;
     padding: 15px 0 0 0;
