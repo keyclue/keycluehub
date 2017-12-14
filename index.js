@@ -57,7 +57,7 @@ app.get('/logout',function(request,response){
             }
         });
     });
-app.get('/create_collection',function(request,response){
+app.post('/create_collection',function(request,response){
 	var col_name  = "product_"+request.body.col_name;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
