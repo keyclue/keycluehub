@@ -77,6 +77,31 @@ app.post('/create_collection',function(request,response){
 		}
 	});
 });
+
+app.post('/save_record',function(request,response){
+	var data  = request.body.data;
+	var dataBase  = request.body.data_base;
+	mongo.connect(uristring, function (err, db) {
+		if (err) {
+			db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
+		} else {
+			 db.collection(dataBase, function(err, collection) {
+            collection.insert({"product_details":data}, function (err, success) {
+			
+				if (err) {
+					
+				}else{
+					console.log("Data Saved!");
+					db.close();
+					 response.redirect('/collection_view');  
+				}
+			});
+		}
+	});
+});
+
 app.get('/delete_collection/:col_name',function(request,response){
 	var col_name  = request.params.col_name;
 	mongo.connect(uristring, function (err, db) {
@@ -213,6 +238,7 @@ app.get('/cool', function(request, response) {
 });
 
 app.all('/sheet/:col_name', Auth, function(request, response) {
+	var col_name  = request.params.col_name;
 	 if(request.method==='POST'){
 		var log_id 		      = request.body.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
@@ -275,7 +301,7 @@ app.all('/sheet/:col_name', Auth, function(request, response) {
 					var cell = cells[0];
 					// console.log('Cell R'+cell.row+'C'+cell.col+' = '+cell.value);
 					// response.send(cells);
-					response.render('pages/sheet',{url:"collection_view", title:'post',data:cells, row:5})	
+					response.render('pages/sheet',{url:"collection_view", title:'post',data:cells, row:5, data_base:col_name})	
 					// cells have a value, numericValue, and formula
 					cell.value == '1'
 					cell.numericValue == 1;
@@ -317,7 +343,7 @@ app.all('/sheet/:col_name', Auth, function(request, response) {
 			}
 		});
 	}else{
-		response.render('pages/sheet',{url:"collection_view", title:'get',data:""})	
+		response.render('pages/sheet',{url:"collection_view", title:'get',data:"", data_base:col_name })	
 	}
 });
 app.post('/get_gsheet_data', function(request, response) {
