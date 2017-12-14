@@ -98,6 +98,7 @@ app.post('/save_record',function(request,response){
 					 response.redirect('/collection_view');  
 				}
 			});
+			});
 		}
 	});
 });
