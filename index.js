@@ -91,7 +91,7 @@ app.get('/delete_collection/:col_name',function(request,response){
 				}else{
 					console.log("Collection deleted!");
 					db.close();
-					 response.redirect('/collection_view/');  
+					 response.redirect('/collection_view');  
 				}
 			});
 		}
