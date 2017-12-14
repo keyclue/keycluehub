@@ -152,6 +152,8 @@
 				<!-- $('form').submit(function(e) { -->
 				alert(hasDups);
 				if (hasDups){
+					alert("Two or more column have same headings.Heading must be unique");
+				}else{
 					$("table").find('tr').each(function (i, el) {
 						var $ths  = $( "th > select option:selected" );
 						var $tds  = $(this).find('td');
@@ -168,8 +170,6 @@
 						+ '\n'+$ths.eq(4).text()+': ' + p_name
 						);
 					});
-				}else{
-					alert("Two or more column have same headings.Heading must be unique");
 				}
 			});
 			accountName = ["SPU", "SKU", "BARCODE NUMBER", "BRAND", "PRODUCT NAME", "TAG PRICE", "SALE PRICE", "IMAGE", "FABRIC", "HS CODE", "(Tmall only)", "(Tmall only)", "(Tmall only)",	"(Tmall only)2", "(Tmall only)3",	"MADE IN", "WEIGHT(kg)", "HOW TO WASH",	"SELLING POINT (description)", "PRODUCT PRICE",	"SHIPPING FEE",	"TOTAL PRICE(U+V)", "TOTAL PRICE(U+V)" ];
