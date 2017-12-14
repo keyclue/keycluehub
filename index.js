@@ -75,7 +75,7 @@ app.get('/create_collection',function(request,response){
 				}
 			});
 		}
-	}):
+	});
 });
 
 app.all('/login', function(request, response) {
