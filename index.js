@@ -57,6 +57,26 @@ app.get('/logout',function(request,response){
             }
         });
     });
+app.get('/create_collection',function(request,response){
+	var col_name  = "product_"request.body.col_name;
+	mongo.connect(uristring, function (err, db) {
+		if (err) {
+			db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
+		} else {
+			db.createCollection(col_name, function(err, res) {
+				if (err) {
+					
+				}else{
+					console.log("Collection created!");
+					db.close();
+					 response.redirect('/sheet/'+col_name);
+				}
+			});
+		}
+	}):
+});
 
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
@@ -172,7 +192,7 @@ app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
 });
 
-app.all('/sheet', Auth, function(request, response) {
+app.all('/sheet/:col_name', Auth, function(request, response) {
 	 if(request.method==='POST'){
 		var log_id 		      = request.body.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
