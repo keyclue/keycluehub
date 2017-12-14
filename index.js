@@ -192,7 +192,7 @@ app.all('/home', Auth, function(request, response) {
 	response.render('pages/home')
  
 });
-app.all('/collection_view', function(request, response) {
+app.all('/collection_view',Auth, function(request, response) {
 	mongo.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();
