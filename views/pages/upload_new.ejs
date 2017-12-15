@@ -77,17 +77,14 @@
 		function addImage(dataBase, spu, sku){
 	
 	  $.ajax({ 
-		 url: "/add_image/13MAGJP301BK/" + dataBase, 
+		 url: "/add_image/" + spu + "/" + dataBase, 
 		type: "GET", 
 		cache:false,
 		contentType:false,
 		processData :false,
 		success: function(result){
+		alert(JSON>stringify(result));
 			var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/>';
-			
-			<!-- alert(JSON.stringify(result)); -->
-			<!-- alert(appendData); -->
-			console.log(JSON.stringify(result));
 			$("#"+sku).empty();
 			$("#"+sku).append(appendData);
 
