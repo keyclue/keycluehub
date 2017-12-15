@@ -49,6 +49,7 @@
 			  </tr>
 			</thead>
 			<tbody>
+				<% if(data != ""){ %>
 		<% for(let i = 0; i < data.length; i++) { %>
 		<% var pDetail =  data[i].product_details; %>
 		<% for(let k = 0; k < pDetail.length; k++) { %>
@@ -66,6 +67,10 @@
 		
 		
 			<%  } %>
+			<%  } %>   
+			<%  }else{ %>  
+					<tr><td colspan="8">No Product in database</td></tr>
+			
 			<%  } %>   
 		  </tbody>
 					</table>
