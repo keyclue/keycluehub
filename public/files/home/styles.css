@@ -49,7 +49,41 @@
   width:332px;
   white-space:nowrap;
 }
-
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+.defult-login-page {
+    text-align: center;
+    margin-top: 183px;
+}
+.defult-text p {
+    font-size: 36px;
+    margin: 0;
+    font-weight: 700;
+}
+.user-def input {
+    height: 27px;
+    padding: 0 0px 0px 8px;
+    width: 241px;
+    margin-bottom: 15px;
+}
+.pass-def input {
+    height: 27px;
+    width: 241px;
+    padding: 0 0px 0px 8px;
+    margin-bottom: 20px;
+}
+.def-form a {
+    background: #019;
+    padding: 9px 20px 11px 22px;
+    border-radius: 5px;
+    text-decoration: navajowhite;
+    color: #fff;
+}
+.user-def {
+    padding-top: 20px;
+}
 
 body {
     width: 100%;
