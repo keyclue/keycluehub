@@ -1,6 +1,5 @@
 var express = require('express');
 var expressSession = require('express-session');
- var cloudinary = require('cloudinary');
 var app = express();
 var db = require('./config/database');
 // var Admin        = require('./model/admins');
@@ -245,7 +244,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 					}else{
 						console.log("ss"+JSON.stringify(success[0].product_details));
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/upload_new',{url:"upload",data:success,dataBase:col_name})
+						response.render('pages/upload_new',{url:"upload",data:success,dataBase:col_name});
 					}
 				});
 			});
@@ -256,6 +255,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 app.all('/add_image/:col_name/:sku', function(request, response) {
 	var col_name  = request.params.col_name;
 	var sku  = request.params.sku;
+ var cloudinary = require('cloudinary');
 	cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 		if(error){
 			respone.redirect('/upload_new/'+col_name);
