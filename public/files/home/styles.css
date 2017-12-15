@@ -68,6 +68,7 @@
     width: 241px;
     margin-bottom: 15px;
 }
+.form-control{display:inline !important}
 .pass-def input {
     height: 27px;
     width: 241px;
