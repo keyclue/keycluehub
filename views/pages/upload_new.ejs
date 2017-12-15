@@ -61,7 +61,7 @@
 						<td><%=  pDetail[k].created_date %></td>
 						<td><%=  pDetail[k].modified_date %></td>
 						<td id="<%=  pDetail[k].spu %>"></td>
-						<td><a onclick="return add_image('aaaaa');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
+						<td><a onclick="addImage('aaaaa');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
 					</tr>
 		
 		
@@ -92,8 +92,9 @@ $(document).ready(function() {
 			form.submit();
 		}
 	});
-	function add_image(dataBase){
+	function addImage(dataBase){
 	alert("hii"+dataBase);
+	console.log("hii"+dataBase);
 	 <!-- $.ajax({ -->
 		<!-- url: "/add_image/13MAGJP301BK/" + dataBase, -->
 		<!-- type: "GET", -->
