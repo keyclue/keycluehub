@@ -178,7 +178,7 @@
 				var currentTime = d.getFullYear() + '/' + (month<10 ? '0' : '') + month + '/' + (day<10 ? '0' : '') + day+" "+ d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 				
  					$("table").find('tr').each(function (i, el) {
-				var innerElement = {};
+				var innerElement = {"created_date":currentTime, "modified_date":currentTime};
 						var $tds  = $(this).find('td');
 						var $ths  = $( "th > select option:selected" );
 						 for(k=0;k<23;k++){ 
@@ -188,8 +188,7 @@
 							innerElement[column] = value;
 						 
 						 }
-						 innerElement[created_date] = currentTime;
-						 innerElement[modified_date] = currentTime;
+						
 						 mainArray.push(innerElement);
 							
 						<!-- alert(JSON.stringify(mainArray)); -->
