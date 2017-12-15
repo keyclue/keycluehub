@@ -309,11 +309,22 @@ app.all('/delete_product_image/:col_name/:sku', function(request, response) {
  
 });
 
-app.all('/update_product/:col_name/:sku/:image_name', function(request, response) {
+app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
 	var col_name  = request.params.col_name;
 	var sku  = request.params.sku;
-	var image_name  = request.params.image_name;
 	
+		var spu  = request.params.spu;
+	var cloudinary = require('cloudinary');
+	cloudinary.config({ 
+		cloud_name: 'keyclue', 
+		api_key: '813634257799733', 
+		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
+	});
+cloudinary.v2.api.resources_by_tag(spu, function(error, result){
+		if(error){
+			console.log("here1");
+			response.json({"result":"failed"});
+		}else{
 			mongo.connect(uristring, function (err, db) {
 				if (err) {
 					db.close();
@@ -322,7 +333,7 @@ app.all('/update_product/:col_name/:sku/:image_name', function(request, response
 				} else {
 					
 					db.collection(col_name, function(err, collection) {
-						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": image_name }},function(error, success){
+						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": result.resources[0].url }},function(error, success){
 							if(error){
 							
 								response.json('success');
@@ -334,6 +345,8 @@ app.all('/update_product/:col_name/:sku/:image_name', function(request, response
 						});
 					});
 				}
+		});
+		}
 		});
 		
  

@@ -96,7 +96,7 @@
 				var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/><a onclick=\'return deleteImage("'+dataBase+'","'+sku+'")\' href="javascript:void(0);">X</a>';
 				$("#"+sku).empty();
 				$("#"+sku).append(appendData);
-				$("#btn"+sku).append('<a class="btn btn-primary" onclick=\'return updateProduct("'+dataBase+'","'+sku+'","'+result.resources[0].url+'")\' href="javascript:void(0);">Save</a>');
+				$("#btn"+sku).append('<a class="btn btn-primary" onclick=\'return updateProduct("'+dataBase+'","'+sku+'","'+spu+'")\' href="javascript:void(0);">Save</a>');
 
 
 				return false;
@@ -130,10 +130,10 @@
 	
 	}	
 	
-	function updateProduct(dataBase, sku, image){
+	function updateProduct(dataBase, sku, spu){
 	
 		$.ajax({ 
-			 url: "/update_product/" + dataBase + "/" + sku + "/" + image, 
+			 url: "/update_product/" + dataBase + "/" + sku + "/" + spu, 
 			type: "GET", 
 			cache:false,
 			contentType:false,
