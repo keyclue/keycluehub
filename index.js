@@ -1,5 +1,6 @@
 var express = require('express');
 var expressSession = require('express-session');
+ var cloudinary = require('cloudinary');
 var app = express();
 var db = require('./config/database');
 // var Admin        = require('./model/admins');
@@ -244,7 +245,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 					}else{
 						console.log("ss"+JSON.stringify(success[0].product_details));
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/upload_new',{url:"upload",data:success})
+						response.render('pages/upload_new',{url:"upload",data:success,dataBase:col_name})
 					}
 				});
 			});
@@ -252,9 +253,27 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 	});
  
 });
-app.all('/dashboard', function(request, response) {
- 
-	response.render('pages/dashboard')
+app.all('/add_image/:col_name/:sku', function(request, response) {
+	var col_name  = request.params.col_name;
+	var sku  = request.params.sku;
+	cloudinary.v2.api.resources_by_tag(sku, function(error, result){
+		if(error){
+			respone.redirect('/upload_new/'+col_name);
+		}else{
+			mongo.connect(uristring, function (err, db) {
+				if (err) {
+					db.close();
+					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+					respone.send(err);
+				} else {
+					db.collection('sync_events').update({"product_details.sku":sku},{ $set: { "event_details.$.image_url": "abc" }});
+					respone.redirect('/upload_new/'+col_name);
+			}
+		});
+		}
+		
+	});
+	// response.render('pages/upload',{url:"upload"})
  
 });
 app.get('/cool', function(request, response) {
