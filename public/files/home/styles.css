@@ -49,22 +49,25 @@
   width:332px;
   white-space:nowrap;
 }
-#u1_img {
-  border-width:0px;
-  position:absolute;
-  left:0px;
-  top:0px;
-  width:190px;
-  height:54px;
+
+
+body {
+    width: 100%;
+    text-align: center;
 }
+
 #u1 {
-  border-width:0px;
-  position:absolute;
-  left:536px;
-  top:219px;
-  width:190px;
-  height:54px;
+    border-width: 0px;
+    top: 219px;
+    height: 54px;
+    text-align: center;
+    position: relative;
 }
+u1_img {
+    border-width: 0px;
+    height: 54px;
+}
+
 #u1_text {
   border-width:0px;
   position:absolute;
