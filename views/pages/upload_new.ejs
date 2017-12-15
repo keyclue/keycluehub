@@ -49,7 +49,7 @@
 			</thead>
 			<tbody>
 		<% for(let i = 0; i < data.length; i++) { %>
-		<% for(let k = 0; k < data[i].product_details.length; k++) { %>
+		
 					<tr>
 						<td><input type="checkbox" name="check[]" value=""/></td>
 						<td><%= data[i].product_details %></td>
@@ -59,7 +59,7 @@
 						<td>Delete</td>
 						<td>Duplicate</td>
 					</tr>
-			<%  } %>
+		
 			<%  } %>
 		  </tbody>
 					</table>
