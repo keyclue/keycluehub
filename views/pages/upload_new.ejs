@@ -83,13 +83,18 @@
 		contentType:false,
 		processData :false,
 		success: function(result){
-		alert(JSON.stringify(result));
+		
+		if(result.result == "failed"){
+		alert("Image for this product is nit available.");
+		}else{
+		
 			var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/>';
 			$("#"+sku).empty();
 			$("#"+sku).append(appendData);
 
 
 			return false;
+		}
 		}
 
 	});

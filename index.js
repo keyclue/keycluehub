@@ -266,7 +266,7 @@ app.all('/add_image/:spu/:Col_name', function(request, response) {
 cloudinary.v2.api.resources_by_tag(spu, function(error, result){
 		if(error){
 			console.log("here1");
-			response.json(error);
+			response.json({"result":"failed"});
 		}else{
 			response.json(result);
 			
