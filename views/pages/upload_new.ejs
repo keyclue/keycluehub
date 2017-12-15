@@ -95,7 +95,7 @@ $(document).ready(function() {
 	function add_image(dataBase, spu){
 	
 	 $.ajax({
-		url: "/add_image/"+dataBase+'/'+spu,
+		url: "/add_image/"+spu+"/"+dataBase,
 		type: "POST",
 		cache:false,
 		contentType:false,

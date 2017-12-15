@@ -254,16 +254,16 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
  
 });
 
-app.all('/add_image/:col_name/:sku', function(request, response) {
+app.all('/add_image/:spu/:Col_name', function(request, response) {
 	var col_name  = request.params.col_name;
-	var sku  = request.params.sku;
+	var spu  = request.params.spu;
 	var cloudinary = require('cloudinary');
 	cloudinary.config({ 
 		cloud_name: 'keyclue', 
 		api_key: '813634257799733', 
 		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
 	});
-cloudinary.v2.api.resources_by_tag(sku, function(error, result){
+cloudinary.v2.api.resources_by_tag(spu, function(error, result){
 		if(error){
 			console.log("here1");
 			response.json(error);
