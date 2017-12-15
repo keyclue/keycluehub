@@ -49,19 +49,19 @@
 			</thead>
 			<tbody>
 		<% for(let i = 0; i < data.length; i++) { %>
-	
+		<% Object.keys(data[i].product_details).forEach(function(key){ %>
 					<tr>
 						<td><input type="checkbox" name="check[]" value=""/></td>
-						<td><%=  data[i].SKU %></td>
-						<td><%=  data[i].SKU %></td>
-						<td><%=  data[i].SKU %></td>
+						<td><%=  data[i].product_details[SKU] %></td>
+						<td><%=  data[i].product_details %></td>
+						<td><%=  data[i].product_details %></td>
 						<td>Upload <%= data.length %></td>
 						<td>Delete</td>
 						<td>Duplicate</td>
 					</tr>
 		
+			<%  }); %>
 			<%  } %>
-			
 		  </tbody>
 					</table>
 				
