@@ -263,16 +263,16 @@ app.all('/add_image/:col_name/:sku', function(request, response) {
 	});
 cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 		if(error){
-			respone.redirect('/upload_new/'+col_name);
+			response.redirect('/upload_new/'+col_name);
 		}else{
 			mongo.connect(uristring, function (err, db) {
 				if (err) {
 					db.close();
 					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-					respone.send(err);
+					response.send(err);
 				} else {
 					db.collection('sync_events').update({"product_details.sku":sku},{ $set: { "event_details.$.image_url": "abc" }});
-					respone.redirect('/upload_new/'+col_name);
+					response.redirect('/upload_new/'+col_name);
 			}
 		});
 		}
