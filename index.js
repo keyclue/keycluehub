@@ -80,6 +80,7 @@ app.post('/create_collection',function(request,response){
 
 app.post('/save_record',function(request,response){
 	var data  = request.body.data;
+	data = datareplace(/\\\//g, "/");
 	var dataBase  = request.body.data_base;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
