@@ -224,9 +224,14 @@ app.all('/brands', Auth, function(request, response) {
  
 });
 
-app.all('/upload/:col_name', Auth,  function(request, response) {
+app.all('/upload', Auth,  function(request, response) {
  
 	response.render('pages/upload',{url:"upload"})
+ 
+});
+app.all('/upload_new/:col_name', Auth,  function(request, response) {
+ 
+	response.render('pages/upload_new',{url:"upload"})
  
 });
 app.all('/dashboard', function(request, response) {
