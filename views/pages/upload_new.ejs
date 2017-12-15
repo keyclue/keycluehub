@@ -50,10 +50,11 @@
 			<tbody>
 		<% for(let i = 0; i < data.length; i++) { %>
 		<% var p_detail =  JSON.parse(data[i].product_details); %>
+		<% for(let k = 0; k < p_detail.length; k++) { %>
 		
 					<tr>
 						<td><input type="checkbox" name="check[]" value=""/></td>
-						<td><%=  p_detail[0] %></td>
+						<td><%=  p_detail[k].SKU %></td>
 						<td><%=  data[i].product_details %></td>
 						<td><%=  data[i].product_details %></td>
 						<td>Upload <%= data.length %></td>
