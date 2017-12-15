@@ -182,12 +182,12 @@
 							innerElement[column] = value;
 						 
 						 }
-						 mainArray.push(JSON.parse(innerElement));
+						 mainArray.push(innerElement);
 							
 						<!-- alert(JSON.stringify(mainArray)); -->
 						
 					});
-					$('#data').val(JSON.stringify(mainArray));
+					$('#data').val(JSON.stringify(JSON.parse(mainArray)));
 					$('#save_data').submit();
 				}
 			});
