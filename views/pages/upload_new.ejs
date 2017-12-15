@@ -60,8 +60,8 @@
 						<td><%=  pDetail[k].product_name %></td>
 						<td><%=  pDetail[k].created_date %></td>
 						<td><%=  pDetail[k].modified_date %></td>
-						<td id="<%=  pDetail[k].spu %>"></td>
-						<td><a onclick="addImage('<%= dataBase%>','<%=  pDetail[k].spu %>');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
+						<td id="<%=  pDetail[k].sku %>"></td>
+						<td><a onclick="addImage('<%= dataBase%>','<%=  pDetail[k].spu %>','<%=  pDetail[k].sku %>');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
 					</tr>
 		
 		
@@ -74,7 +74,7 @@
 			</div>
 			
 <script>
-		function addImage(dataBase, spu){
+		function addImage(dataBase, spu, sku){
 	
 	  $.ajax({ 
 		 url: "/add_image/13MAGJP301BK/" + dataBase, 
@@ -83,12 +83,12 @@
 		contentType:false,
 		processData :false,
 		success: function(result){
-			var appendData = '<img src="' + result.resources[0].url + '"/>';
+			var appendData = '<img width="100px" height="100px" src="' + result.resources[0].url + '"/>';
 			
 			alert(JSON.stringify(result));
 			alert(appendData);
 			console.log(JSON.stringify(result));
-			$("#"+spu).append(appendData);
+			$("#"+sku).append(appendData);
 
 
 			return false;
