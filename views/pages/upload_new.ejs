@@ -86,8 +86,9 @@
 			var appendData = '<img src="' + result.resources.url + '"/>';
 			
 			alert(JSON.stringify(result));
+			alert(appendData);
 			console.log(JSON.stringify(result));
-			$("#"+spu).append(appendData);
+			$("#"+spu).html(appendData);
 
 
 			return false;
