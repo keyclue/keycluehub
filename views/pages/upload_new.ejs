@@ -48,7 +48,8 @@
 			  </tr>
 			</thead>
 			<tbody>
-		<% data.forEach(function(r, index) { %>
+		<% data.forEach(function(r1, index) { %>
+		<% r1.product_details.forEach(function(r, index) { %>
 					<tr>
 						<td><input type="chekbox" name="check[]" value=""/></td>
 						<td><%= r.SPU %></td>
@@ -58,6 +59,7 @@
 						<td>Delete</td>
 						<td>Duplicate</td>
 					</tr>
+			<%  }); %>
 			<%  }); %>
 		  </tbody>
 					</table>
