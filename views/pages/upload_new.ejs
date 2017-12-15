@@ -62,7 +62,7 @@
 						<td><%=  pDetail[k].created_date %></td>
 						<td><%=  pDetail[k].modified_date %></td>
 						<td id="<%=  pDetail[k].sku.trim() %>"></td>
-						<td><a onclick="addImage('<%= dataBase%>','<%=  pDetail[k].spu %>','<%=  pDetail[k].sku %>');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
+						<td id="btn<%=  pDetail[k].sku.trim() %>"><a onclick="addImage('<%= dataBase%>','<%=  pDetail[k].spu %>','<%=  pDetail[k].sku %>');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
 					</tr>
 		
 		
@@ -96,6 +96,7 @@
 				var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/><a onclick=\'return deleteImage("'+dataBase+'","'+sku+'")\' href="javascript:void(0);">X</a>';
 				$("#"+sku).empty();
 				$("#"+sku).append(appendData);
+				$("#btn"+sku).append('<a class="btn btn-primary" onclick=\'return updateProduct("'+dataBase+'","'+sku+'","'+result.resources[0].url+'")\' href="javascript:void(0);">Save</a>');
 
 
 				return false;
@@ -118,6 +119,29 @@
 			
 		
 				$("#"+sku).empty();
+				
+
+
+				return false;
+			
+			}
+
+		});
+	
+	}	
+	
+	function updateProduct(dataBase, sku, image){
+	
+		$.ajax({ 
+			 url: "/update_product/" + dataBase + "/" + sku + "/" + image, 
+			type: "GET", 
+			cache:false,
+			contentType:false,
+			processData :false,
+			success: function(result){
+			
+		
+alert("Updated successfully");
 				
 
 

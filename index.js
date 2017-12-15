@@ -292,7 +292,37 @@ app.all('/delete_product_image/:col_name/:sku', function(request, response) {
 				} else {
 					
 					db.collection(col_name, function(err, collection) {
-						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": "deleet" }},function(error, success){
+						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": "" }},function(error, success){
+							if(error){
+							
+								response.json('success');
+							}else{
+								
+								response.json('success');
+							}
+						
+						});
+					});
+				}
+		});
+		
+ 
+});
+
+app.all('/update_product/:col_name/:sku/:image_name', function(request, response) {
+	var col_name  = request.params.col_name;
+	var sku  = request.params.sku;
+	var image_name  = request.params.image_name;
+	
+			mongo.connect(uristring, function (err, db) {
+				if (err) {
+					db.close();
+					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+					response.send(err);
+				} else {
+					
+					db.collection(col_name, function(err, collection) {
+						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": image_name }},function(error, success){
 							if(error){
 							
 								response.json('success');
