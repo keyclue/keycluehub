@@ -230,8 +230,16 @@ app.all('/upload', Auth,  function(request, response) {
  
 });
 app.all('/upload_new/:col_name', Auth,  function(request, response) {
- 
-	response.render('pages/upload_new',{url:"upload"})
+	var col_name  = request.params.col_name;
+	db.collection(col_name, function(err, collection) {
+		collection.find({}, function (error, success) {
+			if(error){
+				console.log("error : "+error);
+			}else{
+				response.render('pages/upload_new',{url:"upload",data:success})
+			}
+		});
+	});
  
 });
 app.all('/dashboard', function(request, response) {
