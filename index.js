@@ -243,7 +243,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 						console.log("error : "+error);
 					}else{
 						console.log("ss"+JSON.stringify(success));
-						console.log("SS"+JSON.stringify(success.product_details));
+						// console.log("SS"+JSON.stringify(success.product_details));
 						response.render('pages/upload_new',{url:"upload",data:success})
 					}
 				});
