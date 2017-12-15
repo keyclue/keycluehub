@@ -224,7 +224,7 @@ app.all('/brands', Auth, function(request, response) {
  
 });
 
-app.all('/upload', Auth,  function(request, response) {
+app.all('/upload/:col_name', Auth,  function(request, response) {
  
 	response.render('pages/upload',{url:"upload"})
  
