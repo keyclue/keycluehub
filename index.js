@@ -242,7 +242,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 					if(error){
 						console.log("error : "+error);
 					}else{
-						console.log("ss"+JSON.stringify(success.product_details));
+						console.log("ss"+JSON.stringify(success[0].product_details));
 						// console.log("SS"+JSON.stringify(success.product_details));
 						response.render('pages/upload_new',{url:"upload",data:success})
 					}
