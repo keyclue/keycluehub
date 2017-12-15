@@ -182,7 +182,7 @@
 						var $tds  = $(this).find('td');
 						var $ths  = $( "th > select option:selected" );
 						 for(k=0;k<23;k++){ 
-							column = $ths.eq(k).text();
+							column = $ths.eq(k).value;
 							value = $tds.eq(k).text();
 							
 							innerElement[column] = value;
@@ -204,7 +204,7 @@
 				var selected = $("#dropdown"+i).val();
 				$("#dropdown"+i).empty();
 				$.each(accountName, function( key, value) {   
-				alert(key,value);
+				<!-- alert(key,value); -->
 					if(selected == key){ var select = 'selected';}else{ var select = '';}
 					$('#dropdown'+i).append($("<option "+ select+" ></option>")
 									.attr("value",key)
