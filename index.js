@@ -268,7 +268,11 @@ cloudinary.v2.api.resources_by_tag(spu, function(error, result){
 			console.log("here1");
 			response.json({"result":"failed"});
 		}else{
-			response.json(result);
+			if(result == ""){
+				response.json({"result":"failed"});
+			}else{
+				response.json(result);
+			}
 			
 		}
 		
