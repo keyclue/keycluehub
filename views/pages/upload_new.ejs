@@ -93,7 +93,7 @@
 		alert("Image for this product is not available.");
 		}else{
 		
-			var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/>';
+			var appendData = '<img width="50px" height="50px" src="' + result.resources[0].url + '"/><a href="/delete_product_image/"'+sku+'>X</a>';
 			$("#"+sku).empty();
 			$("#"+sku).append(appendData);
 
