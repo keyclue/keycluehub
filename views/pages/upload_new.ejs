@@ -74,25 +74,7 @@
 			</div>
 			
 <script>
-			
-$(document).ready(function() {
-			<!-- $('table').SetEditable(); -->
-			<!-- $('#example').dataTable();  -->
-			
-		
- 
-	 $("#create_collection").validate({
-		rules: {
-			col_name: "required",
-		},
-		messages: {
-			col_name: "Please enter collection name.",
-		},
-		submitHandler: function(form) {
-			form.submit();
-		}
-	});
-	function addImage(dataBase){
+		function addImage(dataBase){
 	alert("hii"+dataBase);
 	console.log("hii"+dataBase);
 	 <!-- $.ajax({ -->
@@ -113,7 +95,25 @@ $(document).ready(function() {
 
 	<!-- }); -->
 	
-	}
+	}	
+$(document).ready(function() {
+			<!-- $('table').SetEditable(); -->
+			<!-- $('#example').dataTable();  -->
+			
+		
+ 
+	 $("#create_collection").validate({
+		rules: {
+			col_name: "required",
+		},
+		messages: {
+			col_name: "Please enter collection name.",
+		},
+		submitHandler: function(form) {
+			form.submit();
+		}
+	});
+	
 });
 		
 </script>
