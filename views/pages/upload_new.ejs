@@ -48,12 +48,12 @@
 			  </tr>
 			</thead>
 			<tbody>
-		<% Object.keys(data.product_details).forEach(function(key){ %>
+		<% data.forEach(function(r, index) { %>
 					<tr>
 						<td><input type="checkbox" name="check[]" value=""/></td>
-						<td><%= data.product_details[SKU] %></td>
-						<td><%= data.product_details[SKU] %></td>
-						<td><%= data.product_details[SKU] %></td>
+						<td><%= r.product_details[SPU] %></td>
+						<td><%= r.product_details[SPU] %></td>
+						<td><%= r.product_details[SPU] %></td>
 						<td>Upload</td>
 						<td>Delete</td>
 						<td>Duplicate</td>
