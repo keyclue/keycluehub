@@ -244,7 +244,7 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 					}else{
 						console.log("ss"+JSON.stringify(success[0].product_details));
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/upload_new',{url:"upload",data:success})
+						response.render('pages/upload_new',{url:"upload",data:success[0].product_details})
 					}
 				});
 			});
