@@ -70,3 +70,44 @@
     padding-left: 63px;
     padding-right: 30px;
 }
+.left-sec {
+    float: left;
+    width: 60%;
+}
+.search {
+    width: 44%;
+    float: left;
+    padding: 0 17px 16px 70px;
+}
+#create_collection {
+    text-align: center;
+    float: left;
+
+}
+.input-upload-text {
+    width: 54%;
+    padding: 0px 0px 19px 55px;
+    float: left;
+}
+.upload-input {
+    float: left;
+    padding: 0 21px 0px 0px;
+} 
+#create_collection {
+    float: right;
+    width: 35%;
+}
+.input-upload-text {
+    width: 100%;
+    padding: 14px 0px 19px 62px;
+    float: left;
+}
+.upload-btn {
+    width: 38%;
+    float: left;
+}
+.left-sec {
+    width: 40%;
+    margin-top: 16px;
+    float: left;
+}
