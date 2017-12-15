@@ -273,7 +273,7 @@ cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 					response.send(err);
 				} else {
 					console.log("here2");
-					db.collection('sync_events').update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }},function(error, success){
+					db.collection(col_name).update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }},function(error, success){
 						if(error){
 							console.log("here3"+error);
 					response.redirect('/upload_new/'+col_name);
