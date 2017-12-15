@@ -101,10 +101,10 @@ $(document).ready(function() {
 		contentType:false,
 		processData :false,
 		success: function(result){
-			var appendData = '<img src="' + result.resources.url + '"/>';
+			<!-- var appendData = '<img src="' + result.resources.url + '"/>'; -->
 			
-			
-			$("#"+spu).append(appendData);
+			alert(result);
+			<!-- $("#"+spu).append(appendData); -->
 
 
 			return false;
