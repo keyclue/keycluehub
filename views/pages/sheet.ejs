@@ -204,7 +204,8 @@
 				var selected = $("#dropdown"+i).val();
 				$("#dropdown"+i).empty();
 				$.each(accountName, function( key, value) {   
-					if(selected == value){ var select = 'selected';}else{ var select = '';}
+				alert(key,value);
+					if(selected == key){ var select = 'selected';}else{ var select = '';}
 					$('#dropdown'+i).append($("<option "+ select+" ></option>")
 									.attr("value",key)
 									.text(value)); 
