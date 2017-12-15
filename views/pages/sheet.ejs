@@ -11,64 +11,76 @@
 			</div>
 			<form id="g_sheet" action="" name="form" method="post">
 				<div class="col-lg-12">
-				<div class="in-input">
-					<input  class="form-control " type="text" Placeholder="Paste your Spreadsheet ID here" name="sheet_url" />
-				</div>
-				
-				
-				<div class="in-btn">
-					<input class="btn btn-primary" type="submit" name="submit" value="sync">
-				</div>
+					<div class="in-input">
+						<input  class="form-control " type="text" Placeholder="Paste your Spreadsheet ID here" name="sheet_url" />
+					</div>
+							
+					<div class="in-btn">
+						<input class="btn btn-primary" type="submit" name="submit" value="sync">
+					</div>
 				</div>
 			</form>
 			<form id="csv" style="display:none;"action="" name="form" method="post">
 				<div class="col-lg-12">
-				<div class="in-input">
-					<input  class=" " type="File" Placeholder="Paste your Spreadsheet ID here" name="csv" />
-				</div>
-				
-				
-				<div class="in-btn">
-					<input class="btn btn-primary" type="submit" name="submit" value="sync">
-				</div>
+					<div class="in-input">
+						<input  class=" " type="File" Placeholder="Paste your Spreadsheet ID here" name="csv" />
+					</div>
+					<div class="in-btn">
+						<input class="btn btn-primary" type="submit" name="submit" value="sync">
+					</div>
 				</div>
 			</form>
 			<div class="container">
 				<% if(data != ""){ %>
 				<div class="scrool">
 					<table id = "example" class="table table-bordered">
-					<thead>
-					<tr>
-						<th><select id="dropdown1" style="width: 100%;">
-						  <option>SPU</option>
-						</select> </th>
-						<th><select id="dropdown2" style="width: 100%;">
-						  <option>SKU</option>
-						</select> </th>
-						<th><select id="dropdown3" style="width: 100%;">
-						  <option>BARCODE NUMBER</option>
-						</select> </th>
-						<th><select id="dropdown4" style="width: 100%;">
-						  <option>BRAND</option>
-						</select> </th>
-						<th class=""> 
-						<select id="dropdown5" style="width: 100%;">
-						  <option>PRODUCT NAME</option>
-						</select>
-						</th>
-					
-						<th><select id="dropdown6" style="width: 100%;">
-						  <option>TAG PRICE</option>
-						</select> </th>
-						<th><select id="dropdown7" style="width: 100%;">
-						  <option>SALE PRICE</option>
-						</select> </th>
-						<th><select id="dropdown8" style="width: 100%;">
-						  <option>IMAGE</option>
-						</select> </th>
-						<th><select id="dropdown9" style="width: 100%;">
-						  <option>FABRIC</option>
-						</select> </th>
+						<thead>
+							<tr>
+								<th>
+									<select id="dropdown1" style="width: 100%;">
+										<option>SPU</option>
+									</select> 
+								</th>
+								<th>
+									<select id="dropdown2" style="width: 100%;">
+										<option>SKU</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown3" style="width: 100%;">
+										<option>BARCODE NUMBER</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown4" style="width: 100%;">
+										<option>BRAND</option>
+									</select> 
+								</th>
+								<th class=""> 
+									<select id="dropdown5" style="width: 100%;">
+										<option>PRODUCT NAME</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown6" style="width: 100%;">
+										<option>TAG PRICE</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown7" style="width: 100%;">
+										<option>SALE PRICE</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown8" style="width: 100%;">
+										<option>IMAGE</option>
+									</select>
+								</th>
+								<th>
+									<select id="dropdown9" style="width: 100%;">
+										<option>FABRIC</option>
+									</select>
+								</th>
 						<th><select id="dropdown10" style="width: 100%;">
 						  <option>HS CODE</option>
 						</select> </th>
@@ -170,7 +182,7 @@
 							innerElement[column] = value;
 						 
 						 }
-						 mainArray.push(innerElement);
+						 mainArray.push(JSON.parse(innerElement));
 							
 						<!-- alert(JSON.stringify(mainArray)); -->
 						
