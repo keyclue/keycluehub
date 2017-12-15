@@ -175,7 +175,7 @@
 				var month = d.getMonth()+1;
 			var day = d.getDate();
 
-				var currentTime = d.getFullYear() + '/' + (month<10 ? '0' : '') + month + '/' + (day<10 ? '0' : '') + day+" "+ d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+				var currentTime = d.getFullYear() + '/' + (month<10 ? '0' : '') + month + '/' + (day<10 ? '0' : '') + day +" "+ d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 				
  					$("table").find('tr').each(function (i, el) {
 				var innerElement = {"created_date":currentTime, "modified_date":currentTime};
@@ -198,7 +198,7 @@
 					$('#save_data').submit();
 				}
 			});
-			accountName = ["spu":"SPU", "sku":"SKU", "barcode_number":"BARCODE NUMBER", "brand":"BRAND", "product_name":"PRODUCT NAME", "tag_price":"TAG PRICE", "sale_price":"SALE PRICE", "image":"IMAGE", "fabric":"FABRIC", "hs_code":"HS CODE", "tmall":"(Tmall only)", "tmall_0":"(Tmall only)0", "tmall_1":"(Tmall only)1",	"tmall_2":"(Tmall only)2", "tmall_3":"(Tmall only)3",	"made_in":"MADE IN", "weight_in_kg":"WEIGHT(kg)", "how_to_wash":"HOW TO WASH",	"selling_point":"SELLING POINT (description)", "product_price":"PRODUCT PRICE",	"shipping_fee":"SHIPPING FEE",	"total_price":"TOTAL PRICE(U+V)", "total_price_1":"TOTAL PRICE(U+V)1" ];
+			accountName = {"spu":"SPU", "sku":"SKU", "barcode_number":"BARCODE NUMBER", "brand":"BRAND", "product_name":"PRODUCT NAME", "tag_price":"TAG PRICE", "sale_price":"SALE PRICE", "image":"IMAGE", "fabric":"FABRIC", "hs_code":"HS CODE", "tmall":"(Tmall only)", "tmall_0":"(Tmall only)0", "tmall_1":"(Tmall only)1",	"tmall_2":"(Tmall only)2", "tmall_3":"(Tmall only)3",	"made_in":"MADE IN", "weight_in_kg":"WEIGHT(kg)", "how_to_wash":"HOW TO WASH",	"selling_point":"SELLING POINT (description)", "product_price":"PRODUCT PRICE",	"shipping_fee":"SHIPPING FEE",	"total_price":"TOTAL PRICE(U+V)", "total_price_1":"TOTAL PRICE(U+V)1" };
 			var loop = $("th").length;
 			for(var i =1;i< loop;i++){
 				var selected = $("#dropdown"+i).val();
