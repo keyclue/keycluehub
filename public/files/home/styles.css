@@ -55,7 +55,20 @@ body {
     width: 100%;
     text-align: center;
 }
-
+#base {
+    position: relative;
+    z-index: 0;
+}
+#u0_text p {
+    font-size: 36px;
+    font-weight: 700;
+}
+#u0_text {
+    border-width: 0px;
+    position: relative;
+    top: 242px;
+    white-space: nowrap;
+}
 #u1 {
     border-width: 0px;
     top: 219px;
