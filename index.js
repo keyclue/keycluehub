@@ -271,7 +271,7 @@ cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
 					response.send(err);
 				} else {
-					db.collection('sync_events').update({"product_details.sku":sku},{ $set: { "event_details.$.image_url": "abc" }});
+					db.collection('sync_events').update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }});
 					response.redirect('/upload_new/'+col_name);
 			}
 		});
