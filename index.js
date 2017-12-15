@@ -238,11 +238,11 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 			respone.send(err);
 		} else {
 			db.collection(col_name, function(err, collection) {
-				collection.find({}, function (error, success) {
+				collection.find({}).toArray( function (error, success) {
 					if(error){
 						console.log("error : "+error);
 					}else{
-						console.log("ss"+success);
+						console.log("ss"+success.product_details);
 						// console.log("SS"+JSON.stringify(success.product_details));
 						response.render('pages/upload_new',{url:"upload",data:success})
 					}
