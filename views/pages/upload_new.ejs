@@ -93,24 +93,24 @@ $(document).ready(function() {
 		}
 	});
 	function add_image(dataBase){
-	
-	 $.ajax({
-		url: "/add_image/13MAGJP301BK/" + dataBase,
-		type: "GET",
-		cache:false,
-		contentType:false,
-		processData :false,
-		success: function(result){
-			<!-- var appendData = '<img src="' + result.resources.url + '"/>'; -->
+	alert("hii"+dataBase);
+	 <!-- $.ajax({ -->
+		<!-- url: "/add_image/13MAGJP301BK/" + dataBase, -->
+		<!-- type: "GET", -->
+		<!-- cache:false, -->
+		<!-- contentType:false, -->
+		<!-- processData :false, -->
+		<!-- success: function(result){ -->
+			<!-- <!-- var appendData = '<img src="' + result.resources.url + '"/>'; --> -->
 			
-			alert(result);
-			<!-- $("#"+spu).append(appendData); -->
+			<!-- alert(result); -->
+			<!-- <!-- $("#"+spu).append(appendData); --> -->
 
 
-			return false;
-		}
+			<!-- return false; -->
+		<!-- } -->
 
-	});
+	<!-- }); -->
 	
 	}
 });
