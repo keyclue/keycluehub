@@ -50,7 +50,7 @@
 			</thead>
 			<tbody>
 		<% for(let i = 0; i < data.length; i++) { %>
-		<% var pDetail =  JSON.parse(data[i].product_details); %>
+		<% var pDetail =  data[i].product_details; %>
 		<% for(let k = 0; k < pDetail.length; k++) { %>
 		
 					<tr>
