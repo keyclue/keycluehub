@@ -60,7 +60,7 @@
 						<td><%=  pDetail[k].product_name %></td>
 						<td><%=  pDetail[k].created_date %></td>
 						<td><%=  pDetail[k].modified_date %></td>
-						<td id="<%=  pDetail[k].sku %>"></td>
+						<td id="<%=  pDetail[k].sku %>"><img src="" id="<%=  pDetail[k].sku %>"/></td>
 						<td><a onclick="addImage('<%= dataBase%>','<%=  pDetail[k].spu %>','<%=  pDetail[k].sku %>');" href="javascript:void(0);" class="btn btn-primary">Add Image</a></td>
 					</tr>
 		
@@ -88,7 +88,7 @@
 			alert(JSON.stringify(result));
 			alert(appendData);
 			console.log(JSON.stringify(result));
-			$("td#"+sku).append(appendData);
+			$("img#"+sku).attr('src',result.resources[0].url);
 
 
 			return false;
