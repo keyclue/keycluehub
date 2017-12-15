@@ -24,15 +24,15 @@
                     <p>글로벌 쇼핑몰 관리 시스템</p>
                 </div>
 				<% if(errors != ""){ %>
-				<div id="" class="alert alert-danger"><%= errors %></div>
+				<div id="error" class="alert alert-danger"><%= errors %></div>
 			<% } %>
                 <form action="" method="post">
                     <div class="def-form">
                         <div class="user-def">
-                            <input class="form-control" type="text" placeholder="user"/>
+                            <input class="form-control" name="email" type="text" placeholder="Email ID"/>
                         </div>
                         <div class="pass-def">
-                            <input class="form-control"  type="password" placeholder="Password"/>
+                            <input class="form-control" name="password" type="password" placeholder="Password"/>
 
                         </div>
                          <input class="btn btn-primary" type="submit" value="Login" />
