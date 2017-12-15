@@ -255,8 +255,13 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 app.all('/add_image/:col_name/:sku', function(request, response) {
 	var col_name  = request.params.col_name;
 	var sku  = request.params.sku;
- var cloudinary = require('cloudinary');
-	cloudinary.v2.api.resources_by_tag(sku, function(error, result){
+	var cloudinary = require('cloudinary');
+	cloudinary.config({ 
+		cloud_name: 'keyclue', 
+		api_key: '813634257799733', 
+		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
+	});
+cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 		if(error){
 			respone.redirect('/upload_new/'+col_name);
 		}else{
