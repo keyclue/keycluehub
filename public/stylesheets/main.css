@@ -60,3 +60,13 @@
     height: 600px;
     overflow: scroll;
 }
+#u4_text p {
+    font-size: 27px;
+    padding-left: 63px;
+}
+.search {
+    width: 21%;
+    float: left;
+    padding-left: 63px;
+    padding-right: 30px;
+}
