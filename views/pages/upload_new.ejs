@@ -83,7 +83,7 @@
 		contentType:false,
 		processData :false,
 		success: function(result){
-			var appendData = '<img src="' + result.resources.url + '"/>';
+			var appendData = '<img src="' + result.resources[0].url + '"/>';
 			
 			alert(JSON.stringify(result));
 			alert(appendData);
