@@ -273,17 +273,19 @@ cloudinary.v2.api.resources_by_tag(sku, function(error, result){
 					response.send(err);
 				} else {
 					console.log("here2");
-					db.collection(col_name).update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }},function(error, success){
-						if(error){
-							console.log("here3"+error);
-					response.redirect('/upload_new/'+col_name);
-						}else{
-							console.log("here4");
-					response.redirect('/upload_new/'+col_name);
-						}
-					
-				});
-			}
+					db.collection(col_name, function(err, collection) {
+						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }},function(error, success){
+							if(error){
+								console.log("here3"+error);
+								response.redirect('/upload_new/'+col_name);
+							}else{
+								console.log("here4");
+								response.redirect('/upload_new/'+col_name);
+							}
+						
+						});
+					});
+				}
 		});
 		}
 		
