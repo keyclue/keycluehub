@@ -8,13 +8,13 @@ var createBrand = function(input,callback){
 	uristring2 = uristring2 + brand_name;
 	mongo.connect(uristring, function (err, db) {
 		console.log("db"+JSON.stringify(err));
-		console.log("db"+JSON.stringify(db));
+		
 		if (err) {
 			return callback(null, null); 
 		}else{
 			mongo.connect(uristring2, function (err, db) {
 		console.log("db2"+JSON.stringify(err));
-		console.log("db2"+JSON.stringify(db));
+		
 		if (err) {
 			return callback(null, null); 
 		}else{
