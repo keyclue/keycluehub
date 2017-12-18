@@ -10,6 +10,7 @@ var algorithm        = "aes-256-ctr";
 var password         = "d6F3Efeq";
 var Auth   = require('./middleware/auth');
 var login                = require("./controllers/login.js");
+var brand                = require("./controllers/brand.js");
 var collection                = require("./controllers/collection.js");
 var cloudinary                = require("./API-Clients/cloudinary.js");
 var googleSheet                = require("./API-Clients/googleSheet.js");
@@ -61,12 +62,24 @@ app.get('/logout',function(request,response){
 app.post('/create_collection',function(request,response){
 	collection.createCollection( request.body,function (err, result) {
 		if(err){
-			response.redirect('/sheet/'+request.body.col_name);  
+			response.send({"error":err});  
         }
         if(result == null) {
 			response.redirect('/sheet/'+request.body.col_name);  
         }else{
 			response.redirect('/sheet/'+result);  
+        }
+    });
+});
+app.post('/create_brand',function(request,response){
+	brand.createBrand( request.body,function (err, result) {
+		if(err){
+			response.send({"error":err});   
+        }
+        if(result == null) {
+			response.redirect('/brands');  
+        }else{
+			response.redirect('/brands');  
         }
     });
 });
