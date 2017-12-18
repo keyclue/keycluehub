@@ -65,9 +65,9 @@ app.post('/create_collection',function(request,response){
 			response.send({"error":err});  
         }
         if(result == null) {
-			response.redirect('/sheet/'+request.body.col_name);  
+			response.redirect('/sheet/'+success._id);  
         }else{
-			response.redirect('/sheet/'+result);  
+			response.redirect('/sheet/'+success._id);  
         }
     });
 });
@@ -128,7 +128,7 @@ app.all('/login', function(request, response) {
 			request.session._id 		= result._id;
 			request.session.admin_name 	= request.body.name;
 			request.session.adminUser	= result;
-            response.redirect('collection_view');
+            response.redirect('brands');
         }
     });
  }else{

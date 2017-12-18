@@ -16,7 +16,7 @@ var createCollection = function(input,callback){
 						return callback(null, null); 
 					}else{
 						db.close();
-						return callback(null, id); 
+						return callback(null, success); 
 					}
 				});
 			});
