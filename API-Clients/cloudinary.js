@@ -8,7 +8,7 @@ var cloudinary = require('cloudinary');
 		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
 	});
 
-var createCollection = function(input,callback){
+var addImage = function(input,callback){
 	var col_name  = input.col_name;
 	var spu  = input.spu;
 	
@@ -24,7 +24,7 @@ var createCollection = function(input,callback){
 		}
 	});
 }
-exports.createCollection = createCollection;
+exports.addImage = addImage;
 
 var deleteImage = function(input,callback){
 	var col_name  = input.col_name;
