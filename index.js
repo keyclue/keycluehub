@@ -204,7 +204,7 @@ app.all('/upload/:id', Auth,  function(request, response) {
 						console.log("error : "+error);
 					}else{
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/upload_new',{url:"upload",data:success});
+						response.render('pages/upload_new',{url:"upload",data:success,dataBase:id});
 					}
 				});
 			});

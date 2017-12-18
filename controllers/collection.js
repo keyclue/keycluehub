@@ -49,15 +49,15 @@ exports.deleteCollection = deleteCollection;
 
 var saveSheetData = function(input,callback){
 var data  = JSON.parse(input.data);
-	var dataBase  = input.data_base;
+	var collection_id  = input.data_base;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
 			db.close();
 			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
 			return callback(null, null); 
 		} else {
-			 db.collection(dataBase, function(err, collection) {
-				collection.insert({"product_details":data}, function (err, success) {
+			 db.collection("sheet_data", function(err, collection) {
+				collection.insert({"product_details":data,"collection_id":collection_id}, function (err, success) {
 					if (err) {
 						return callback(null, null); 
 					}else{
