@@ -11,11 +11,11 @@ var createCollection = function(input,callback){
 			return callback(error);
 		} else {
 			 db.collection("collections", function(err, collection) {
-				collection.insert({"name":col_name, "brand_id":id}, function (err, success) {
+				collection.insert({"name":col_name, "brand_id":id}, function (err, result) {
 					if (err) {
 						return callback(null, null); 
 					}else{
-						return callback(null, success); 
+						return callback(null, result); 
 						db.close();
 					}
 				});

@@ -65,9 +65,9 @@ app.post('/create_collection',function(request,response){
 			response.send({"error":err});  
         }
         if(result == null) {
-			response.redirect('/sheet/'+success._id);  
+			response.redirect('/sheet/'+result._id);  
         }else{
-			response.redirect('/sheet/'+success._id);  
+			response.redirect('/sheet/'+result._id);  
         }
     });
 });
