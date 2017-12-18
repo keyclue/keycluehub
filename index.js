@@ -255,17 +255,18 @@ app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
     });
 });
 
-app.all('/sheet/:col_name', Auth, function(request, response) {
+app.all('/sheet/:col_id', Auth, function(request, response) {
 	var col_name  = request.params.col_name;
+	var brand_id  = request.body._id;
 	 if(request.method==='POST'){
 		 googleSheet.googleSheet( request.body,function (err, result) {
 			if(err){
-				response.render('pages/sheet',{url:"collection_view", title:'get',data:"", data_base:col_name })	
+				response.render('pages/sheet',{url:"collection_view", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
 			}
 			if(result == null) {
-				response.render('pages/sheet',{url:"collection_view", title:'get',data:"", data_base:col_name })	
+				response.render('pages/sheet',{url:"collection_view", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
 			}else{
-				response.render('pages/sheet',{url:"collection_view", title:'post',data:result, row:5, data_base:col_name})	
+				response.render('pages/sheet',{url:"collection_view", title:'post',data:result, row:5, data_base:col_name, brand_id:brand_id})	
 			}
 		});
 	}else{
