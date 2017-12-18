@@ -11,7 +11,7 @@
           <p><span>Product by Brands : admin</span></p>
         </div>
       </div>
-			<form id="create_collection" action="/create_brand" name="form" method="post">
+			<form id="create_brand" action="/create_brand" name="form" method="post">
 				<div class="col-lg-12">
 				<div class="in-input">
 					<input  class="form-control " id="brand_name" type="text" Placeholder="New Brand name" name="brand_name" />
@@ -64,12 +64,12 @@ $(document).ready(function() {
 			
 		
  
-	 $("#create_collection").validate({
+	 $("#create_brand").validate({
 		rules: {
 			col_name: "required",
 		},
 		messages: {
-			col_name: "Please enter collection name.",
+			col_name: "Please enter brand name.",
 		},
 		submitHandler: function(form) {
 			form.submit();
