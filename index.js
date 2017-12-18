@@ -61,12 +61,12 @@ app.get('/logout',function(request,response){
 app.post('/create_collection',function(request,response){
 	collection.createCollection( request.body,function (err, result) {
 		if(err){
-			response.redirect('/sheet/'+encrypt(request.body.col_name));  
+			response.redirect('/sheet/'+request.body.col_name);  
         }
         if(result == null) {
-			response.redirect('/sheet/'+encrypt(request.body.col_name));  
+			response.redirect('/sheet/'+request.body.col_name);  
         }else{
-			response.redirect('/sheet/'+encrypt(result));  
+			response.redirect('/sheet/'+result);  
         }
     });
 });
@@ -218,7 +218,7 @@ app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
 });
 
 app.all('/sheet/:col_name', Auth, function(request, response) {
-	var col_name  = decrypt(request.params.col_name);
+	var col_name  = request.params.col_name;
 	 if(request.method==='POST'){
 		 googleSheet.googleSheet( request.body,function (err, result) {
 			if(err){
