@@ -1,28 +1,18 @@
 
-var mongo = require('mongodb');
-var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
-var uristring2 = 'mongodb://admin:admin123@ds135926.mlab.com:35926/';
+var mongo = require('mongodb').MongoClient;
+var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/';
 
 var createBrand = function(input,callback){
 	var brand_name  = "product_"+input.brand_name;
-	uristring2 = uristring2 + brand_name;
+	uristring = uristring + brand_name;
 	mongo.connect(uristring, function (err, db) {
 		console.log("db"+JSON.stringify(err));
-		
-		if (err) {
-			return callback(null, null); 
-		}else{
-			mongo.connect(uristring2, function (err, db) {
-		console.log("db2"+JSON.stringify(err));
-		
+		console.log("db"+JSON.stringify(db));
 		if (err) {
 			return callback(null, null); 
 		}else{
 			return callback(null, "success"); 
 			db.close();
-		}
-			
-	});
 		}
 			
 	});
