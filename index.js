@@ -5,17 +5,10 @@ var db = require('./config/database');
 // var Admin        = require('./model/admins');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
-// var Server = mongo.Server, Db = mongo.Db, BSON = mongo.BSONPure;
-// var server = new Server('ds135926.mlab.com', 35926, {auto_reconnect: true});
-// db = new Db('heroku_914rlv3g', server);
-// db.open(function(err, db) {
-    // if(!err) {
-        // console.log("Connected to 'scedule_copy' database");
-    // }
-    // console.log("dbconnection error "+err);
-// });
+
 var Auth   = require('./middleware/auth');
-	var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
+var login                = require("../controllers/login.js");
+var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -34,18 +27,7 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
   response.render('pages/index')
 });
-/* app.get('/create_admin', function(request, response) {
-    var Obj = new Admin();
-   Obj.email        = "admin@gmail.com";
-   Obj.password       = "Singh!@#";
-	Obj.save(function(error,success) {
-	   if(error){
-		   console.log("error "+error);
-	   }else{
-		   response.send("user created");
-	   }
-	});
-}); */
+
 
 app.get('/logout',function(request,response){
 
@@ -125,63 +107,22 @@ app.get('/delete_collection/:col_name',function(request,response){
 	});
 });
 
+
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
-	 // var schema = {
-            // 'email': {
-                // notEmpty: {errorMessage:'Email id is required'},
-                // isEmail : {errorMessage:'Email id is invalid'}
-            // },
-            // 'password':{
-                // notEmpty: {errorMessage:'Password field is required'}
-            // }
-        // };
-        // request.check(schema);
-        // var errors = request.validationErrors();
-        // if(errors){
-            // request.session.errors = errors;
-            // console.log("validation error "+JSON.stringify(errors));
-            // response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
-        // }else{
-			var email       = request.body.email;
-			var password    = request.body.password;
-			mongo.connect(uristring, function (err, db) {
-      if (err) {
-		   db.close();
-			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-			respone.send(err);
-      } else {
-		  db.collection("admins", function(err, collection) {
-            collection.findOne({email:email}, function (error, success) {
-               if(error){
-                    console.log("error : "+error);
-               }
-               console.log("success"+success);
-               if(success!=null){
-                   console.log("success1");
-                   if(success.password===password){
-                   // if(decrypt(success.password)===password){
-                       request.session.email 		= request.body.email;
-                       request.session._id 		    = success._id;
-                       request.session.admin_name 	= request.body.name;
-                       request.session.adminUser	= success;
-
-                       response.redirect('collection_view');
-                   }else{
-                       request.session.errors = 'Invalid email id or password';
-                       response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
-                   }
-               }else{
-                   request.session.errors = 'Invalid email id or password';
-                   response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
-               }
-
-            }	);
-            }	);
-	  }
-			});
-        // }
-
+	login.login( request.body,function (err, result) {
+        var finalResponse = responseHelper(res);
+        if(err){
+         request.session.errors = 'Some error occur .Please try again';
+		 response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+        }
+        if(result == null) {
+            request.session.errors = 'Invalid email id or password';
+			response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
+        }else{
+            response.redirect('collection_view');
+        }
+    });
  }else{
 	response.render('pages/login',{errors:"",title:"Login"})
  
