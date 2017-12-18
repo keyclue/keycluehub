@@ -73,7 +73,7 @@ var updateImage = function(input,callback){
 					return callback(null, null); 
 				} else {
 					
-					db.collection(col_name, function(err, collection) {
+					db.collection("sheet_data", function(err, collection) {
 						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": result.resources[0].url }},function(error, success){
 							if(error){
 								console.log ('ERROR--'+error);

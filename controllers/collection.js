@@ -26,14 +26,15 @@ var createCollection = function(input,callback){
 exports.createCollection = createCollection;
 
 var deleteCollection = function(input,callback){
-	var col_name  = input.col_name;
+	var col_name  = input.col_id;
+	var brand_id  = input.brand_id;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
 			db.close();
 			return callback(null, null); 
 		} else {
 			 db.collection("collections", function(err, collection) {
-				collection.insert({"name":col_name}, function (err, success) {
+				collection.remove({"brand_id":brand_id}, function (err, success) {
 					if (err) {
 						return callback(null, null); 
 					}else{
