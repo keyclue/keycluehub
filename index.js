@@ -94,9 +94,9 @@ app.post('/save_record',function(request,response){
 			response.redirect('/collection_view');  
         }
         if(result == null) {
-			response.redirect('/collection_view');  	
+			response.redirect('/collection_view/'+request.body.brand_id);  	
         }else{
-			response.redirect('/collection_view');    
+			response.redirect('/collection_view'+request.body.brand_id);    
         }
     });
 	
