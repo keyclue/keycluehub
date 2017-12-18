@@ -3,7 +3,7 @@ var mongo = require('mongodb').MongoClient;
 var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/';
 
 var createBrand = function(input,callback){
-	var brand_name  = "product_"+input.brand_name;
+	var brand_name  = "input.brand_name;
 	uristring = uristring + brand_name;
 	mongo.connect(uristring, function (err, db) {
 		console.log("db"+JSON.stringify(err));
