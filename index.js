@@ -157,7 +157,7 @@ app.all('/collection_view/:_id',Auth, function(request, response) {
 			} else{
 				console.log("respone"+JSON.stringify(result));
 				db.close();
-				response.render('pages/collection_view/'+brand_id,{url:"collection_view",data:result,brand_id:brand_id})
+				response.render('pages/collection_view/',{url:"collection_view",data:result,brand_id:brand_id})
 			}
      });
 		});
