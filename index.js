@@ -141,7 +141,7 @@ app.all('/home', Auth, function(request, response) {
  });
  
 app.all('/collection_view/:_id',Auth, function(request, response) {
-	var brand_id = request.body._id
+	var brand_id = request.params._id
 	mongo.connect(uristring, function (err, db) {
       if (err) {
 		   db.close();	
