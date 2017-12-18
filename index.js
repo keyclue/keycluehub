@@ -190,21 +190,21 @@ app.all('/brands', Auth, function(request, response) {
  	
  });
 
-app.all('/upload_new/:col_name', Auth,  function(request, response) {
-	var col_name  = request.params.col_name;
+app.all('/upload/:id', Auth,  function(request, response) {
+	var id  = request.params.id;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
 		   db.close();
 			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
 			respone.send(err);
 		} else {
-			db.collection(col_name, function(err, collection) {
-				collection.find({}).toArray( function (error, success) {
+			db.collection("sheet_data", function(err, collection) {
+				collection.find({"collection_id":id}).toArray( function (error, success) {
 					if(error){
 						console.log("error : "+error);
 					}else{
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/upload_new',{url:"upload",data:success,dataBase:col_name});
+						response.render('pages/upload_new',{url:"upload",data:success});
 					}
 				});
 			});
