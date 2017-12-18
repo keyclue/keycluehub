@@ -177,7 +177,7 @@ app.all('/brands', Auth, function(request, response) {
 						console.log("error : "+error);
 					}else{
 						// console.log("SS"+JSON.stringify(success.product_details));
-						response.render('pages/brand',{url:"brands",data:success,dataBase:col_name});
+						response.render('pages/brand',{url:"brands",data:success});
 					}
 				});
 			});
