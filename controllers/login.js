@@ -36,6 +36,6 @@ var login = function(input,callback){
             }	);
 	  }
 			});
-			});
+			}
 			
 			exports.login = login;
