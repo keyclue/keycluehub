@@ -111,7 +111,7 @@ app.get('/delete_collection/:col_name',function(request,response){
 app.all('/login', function(request, response) {
  if(request.method==='POST'){
 	login.login( request.body,function (err, result) {
-        var finalResponse = responseHelper(res);
+     
         if(err){
          request.session.errors = 'Some error occur .Please try again';
 		 response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
