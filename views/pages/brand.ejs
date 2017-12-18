@@ -66,10 +66,11 @@ $(document).ready(function() {
  
 	 $("#create_brand").validate({
 		rules: {
-			brand_name: "required",
+			brand_name: {required : true,alphanumeric : true}
+			
 		},
 		messages: {
-			brand_name: "Please enter brand name.",
+			brand_name: { required :"Please enter brand name.", alphanumeric : "Please enter valid brand name."}
 		},
 		submitHandler: function(form) {
 			form.submit();
