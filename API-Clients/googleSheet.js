@@ -14,7 +14,7 @@ var googleSheet = function(input,callback){
 		async.series([
 			function setAuth(step) {
 				// see notes below for authentication instructions!
-				var creds = require('./My Project 2325-1303b16fb420.json');
+				var creds = require('../My Project 2325-1303b16fb420.json');
 				// OR, if you cannot save the file locally (like on heroku)
 				var creds_json = {
 					client_email: 'tester-436@seraphic-vertex-188009.iam.gserviceaccount.com',
