@@ -77,9 +77,9 @@ var updateImage = function(input,callback){
 						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": result.resources[0].url }},function(error, success){
 							if(error){
 								console.log ('ERROR--'+error);
-								return callback(null, "success"+JSON.stringify(success)); 
+								return callback(null, "success"); 
 							}else{
-								console.log ('ERROR7777');
+								console.log ('ERROR7777'+JSON.stringify(success));
 								return callback(null, "success"); 	
 							}
 						
