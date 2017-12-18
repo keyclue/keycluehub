@@ -173,58 +173,30 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 });
 
 app.all('/add_image/:spu/:Col_name', function(request, response) {
-	var col_name  = request.params.col_name;
-	var spu  = request.params.spu;
-	var cloudinary = require('cloudinary');
-	cloudinary.config({ 
-		cloud_name: 'keyclue', 
-		api_key: '813634257799733', 
-		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
-	});
-cloudinary.v2.api.resources_by_tag(spu, function(error, result){
-		if(error){
-			console.log("here1");
+	cloudinary.addImage( request.params,function (err, result) {
+		if(err){
 			response.json({"result":"failed"});
-		}else{
-			if(result.resources == ""){
-				response.json({"result":"failed"});
-			}else{
-				response.json(result);
-			}
-			
-		}
-		
-	});
-	// response.render('pages/upload',{url:"upload"})
- 
+        }
+        if(result == null) {
+			response.json({"result":"failed"});
+        }else{
+			response.json(result);   
+        }
+    });
 });
+
 app.all('/delete_product_image/:col_name/:sku', function(request, response) {
-	var col_name  = request.params.col_name;
-	var sku  = request.params.sku;
 	
-			mongo.connect(uristring, function (err, db) {
-				if (err) {
-					db.close();
-					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-					response.send(err);
-				} else {
-					
-					db.collection(col_name, function(err, collection) {
-						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": "" }},function(error, success){
-							if(error){
-							
-								response.json('success');
-							}else{
-								
-								response.json('success');
-							}
-						
-						});
-					});
-				}
-		});
-		
- 
+	cloudinary.deleteImage( request.params,function (err, result) {
+		if(err){
+			response.json({"result":"failed"});
+        }
+        if(result == null) {
+			response.json("success");
+        }else{
+			response.json("success");   
+        }
+    });
 });
 
 app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
@@ -271,47 +243,6 @@ cloudinary.v2.api.resources_by_tag(spu, function(error, result){
 });
 
 
-app.all('/add_image_old/:col_name/:sku', function(request, response) {
-	var col_name  = request.params.col_name;
-	var sku  = request.params.sku;
-	var cloudinary = require('cloudinary');
-	cloudinary.config({ 
-		cloud_name: 'keyclue', 
-		api_key: '813634257799733', 
-		api_secret: 'BBItTIJqOnpuepu4IMjTpjzHG1E' 
-	});
-cloudinary.v2.api.resources_by_tag(sku, function(error, result){
-		if(error){
-			console.log("here1");
-			response.redirect('/upload_new/'+col_name);
-		}else{
-			mongo.connect(uristring, function (err, db) {
-				if (err) {
-					db.close();
-					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-					response.send(err);
-				} else {
-					console.log("here2");
-					db.collection(col_name, function(err, collection) {
-						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": "abc" }},function(error, success){
-							if(error){
-								console.log("here3"+error);
-								response.redirect('/upload_new/'+col_name);
-							}else{
-								console.log("here4");
-								response.redirect('/upload_new/'+col_name);
-							}
-						
-						});
-					});
-				}
-		});
-		}
-		
-	});
-	// response.render('pages/upload',{url:"upload"})
- 
-});
 
 app.get('/cool', function(request, response) {
   response.send({"return":"cool"});	
