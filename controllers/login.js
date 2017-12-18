@@ -1,4 +1,4 @@
-
+var mongo = require('mongodb');
 var login = function(input,callback){
 			var email       = input.email;
 			var password    = input.password;
