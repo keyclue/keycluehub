@@ -255,9 +255,9 @@ app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
     });
 });
 
-app.all('/sheet/:col_id', Auth, function(request, response) {
+app.all('/sheet/:col_id/:brand_id', Auth, function(request, response) {
 	var col_name  = request.params.col_name;
-	var brand_id  = request.body._id;
+	var brand_id  = request.params.brand_id;
 	 if(request.method==='POST'){
 		 googleSheet.googleSheet( request.body,function (err, result) {
 			if(err){
