@@ -64,11 +64,11 @@ app.post('/create_collection',function(request,response){
 		if(err){
 			response.send({"error":err});  
         }
-		console.log("res"+JSON.stringify(result));
+		// console.log("res"+JSON.stringify(result));
         if(result == null) {
-			response.redirect('/sheet/'+result._id);  
+			response.redirect('/sheet/'+result["ops"]._id);  
         }else{
-			response.redirect('/sheet/'+result._id);  
+			response.redirect('/sheet/'+result["ops"]._id);  
         }
     });
 });
