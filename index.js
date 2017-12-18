@@ -165,7 +165,25 @@ app.all('/collection_view',Auth, function(request, response) {
  });
 
 app.all('/brands', Auth, function(request, response) {
- 	response.render('pages/brand',{url:"brands"})
+	mongo.connect(uristring, function (err, db) {
+		if (err) {
+		   db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
+		} else {
+			db.collection("brands", function(err, collection) {
+				collection.find({}).toArray( function (error, success) {
+					if(error){
+						console.log("error : "+error);
+					}else{
+						// console.log("SS"+JSON.stringify(success.product_details));
+						response.render('pages/brand',{url:"brands",data:success,dataBase:col_name});
+					}
+				});
+			});
+		}
+	});
+ 	
  });
 
 app.all('/upload_new/:col_name', Auth,  function(request, response) {
@@ -190,6 +208,9 @@ app.all('/upload_new/:col_name', Auth,  function(request, response) {
 	});
  });
 
+
+ 
+ 
 app.all('/add_image/:spu/:Col_name', function(request, response) {
 	cloudinary.addImage( request.params,function (err, result) {
 		if(err){

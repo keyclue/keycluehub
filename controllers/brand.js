@@ -1,6 +1,6 @@
 
-var mongo = require('mongodb').MongoClient;
-var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/';
+var mongo = require('mongodb');
+var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 
 var createBrand = function(input,callback){
 	var brand_name  = 	input.brand_name;
