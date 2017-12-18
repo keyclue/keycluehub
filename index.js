@@ -96,7 +96,7 @@ app.post('/save_record',function(request,response){
         if(result == null) {
 			response.redirect('/collection_view/'+request.body.brand_id);  	
         }else{
-			response.redirect('/collection_view'+request.body.brand_id);    
+			response.redirect('/collection_view/'+request.body.brand_id);    
         }
     });
 	
