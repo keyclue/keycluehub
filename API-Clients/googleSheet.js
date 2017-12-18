@@ -3,7 +3,7 @@ var mongo = require('mongodb');
 var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 
 var googleSheet = function(input,callback){
-	var log_id 		      = request.body.sheet_url;
+	var log_id 		      = input.sheet_url;
 		var GoogleSpreadsheet = require('google-spreadsheet');
 		var async 			  = require('async');
 		// spreadsheet key is the long id in the sheets URL
