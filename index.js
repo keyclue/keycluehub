@@ -79,24 +79,17 @@ app.post('/save_record',function(request,response){
 });
 
 app.get('/delete_collection/:col_name',function(request,response){
-	var col_name  = request.params.col_name;
-	mongo.connect(uristring, function (err, db) {
-		if (err) {
-			db.close();
-			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-			respone.send(err);
-		} else {
-			db.dropCollection(col_name, function(err, res) {
-				if (err) {
-					
-				}else{
-					console.log("Collection deleted!");
-					db.close();
-					 response.redirect('/collection_view');  
-				}
-			});
-		}
-	});
+	
+	collection.deleteCollection( request.params,function (err, result) {
+		if(err){
+			response.redirect('/collection_view');  
+        }
+        if(result == null) {
+			response.redirect('/collection_view');  	
+        }else{
+			response.redirect('/collection_view');    
+        }
+    });
 });
 
 
