@@ -5,7 +5,9 @@ var db = require('./config/database');
 // var Admin        = require('./model/admins');
 var mongoose = require('mongoose');
 var mongo = require('mongodb');
-
+var crypto           = require("crypto");
+var algorithm        = "aes-256-ctr";
+var password         = "d6F3Efeq";
 var Auth   = require('./middleware/auth');
 var login                = require("./controllers/login.js");
 var collection                = require("./controllers/collection.js");
@@ -27,6 +29,21 @@ app.use(expressSession({secret:'max',saveUninitialized:false,resave:false,
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+
+/* for encryption   */
+function encrypt(text){
+    var cipher  = crypto.createCipher(algorithm,password);
+    var crypted = cipher.update(text,"utf8","hex");
+    crypted    += cipher.final("hex");
+    return crypted;
+}
+/* for decryption */
+function decrypt(text){
+    var decipher = crypto.createDecipher(algorithm,password);
+    var dec      = decipher.update(text,"hex","utf8");
+    dec         += decipher.final("utf8");
+    return dec;
+}
 app.get('/', function(request, response) {
   response.render('pages/index')
 });
@@ -44,12 +61,12 @@ app.get('/logout',function(request,response){
 app.post('/create_collection',function(request,response){
 	collection.createCollection( request.body,function (err, result) {
 		if(err){
-			response.redirect('/sheet/'+request.body.col_name);  
+			response.redirect('/sheet/'+encrypt(request.body.col_name));  
         }
         if(result == null) {
-			response.redirect('/sheet/'+request.body.col_name);  
+			response.redirect('/sheet/'+encrypt(request.body.col_name));  
         }else{
-			response.redirect('/sheet/'+result);  
+			response.redirect('/sheet/'+encrypt(result));  
         }
     });
 });
@@ -201,7 +218,7 @@ app.all('/update_product/:col_name/:sku/:spu', function(request, response) {
 });
 
 app.all('/sheet/:col_name', Auth, function(request, response) {
-	var col_name  = request.params.col_name;
+	var col_name  = decrypt(request.params.col_name);
 	 if(request.method==='POST'){
 		 googleSheet.googleSheet( request.body,function (err, result) {
 			if(err){
