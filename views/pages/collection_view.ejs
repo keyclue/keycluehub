@@ -42,10 +42,9 @@
 			</thead>
 			<tbody>
 			<% data.forEach(function(r, index) { %>
-				<% if(r.name.indexOf("product") > -1) { %>
-					<% final_name = r.name.split("_"); %>
+				
 					<tr>
-						<td><%= final_name[1] %></td>
+						<td><%= r.name %></td>
 						<td><a href="/sheet/<%= r.name %>" class="btn-primary btn">Import</a></td>
 						<td><a href="" class="btn-primary btn">Edit</a></td>
 						<td><a href="" class="btn-primary btn">Export</a></td>
@@ -53,7 +52,7 @@
 						<td><a href="delete_collection/<%= r.name %>" class="btn-primary btn">Delete</a></td>
 						<td><a href="" class="btn-primary btn">Duplicate</a></td>
 					</tr>
-				<% } %>
+			
 			<% }); %>
 		  </tbody>
 					</table>
