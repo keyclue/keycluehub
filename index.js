@@ -140,25 +140,26 @@ app.all('/home', Auth, function(request, response) {
  	response.render('pages/home')
  });
  
-app.all('/collection_view',Auth, function(request, response) {
+app.all('/collection_view/:_id',Auth, function(request, response) {
+	var brand_id = request.body._id
 	mongo.connect(uristring, function (err, db) {
       if (err) {
-		   db.close();
+		   db.close();	
 			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
 			respone.send(err);
       } else {
 		console.log ('Succeeded connected to-: ' + uristring);
-		// db.collection("admins", function(err, collection) {
-			db.listCollections().toArray(function(error, result) {
-			// collection.find({}).toArray( function(error,result) {
+		db.collection("collections", function(err, collection) {
+			// db.listCollections().toArray(function(error, result) {
+			collection.find({"brand_id":brand_id}).toArray( function(error,result) {
 			if (error){
 				respone.send(err);
 			} else{
 				console.log("respone"+JSON.stringify(result));
 				db.close();
-				response.render('pages/collection_view',{url:"collection_view",data:result})
+				response.render('pages/collection_view/'+brand_id,{url:"collection_view",data:result,brand_id:brand_id})
 			}
-     // });
+     });
 		});
       }
     });
