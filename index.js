@@ -9,6 +9,7 @@ var mongo = require('mongodb');
 var Auth   = require('./middleware/auth');
 var login                = require("./controllers/login.js");
 var collection                = require("./controllers/collection.js");
+var cloudinary                = require("./API-Clients/cloudinary.js");
 var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
 
