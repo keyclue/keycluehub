@@ -8,6 +8,7 @@ var mongo = require('mongodb');
 
 var Auth   = require('./middleware/auth');
 var login                = require("./controllers/login.js");
+var collection                = require("./controllers/collection.js");
 var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 app.set('port', (process.env.PORT || 5000));
 
@@ -30,8 +31,7 @@ app.get('/', function(request, response) {
 
 
 app.get('/logout',function(request,response){
-
-        request.session.destroy(function(err) {
+   request.session.destroy(function(err) {
             if(err) {
                 console.log(err);
             } else {
@@ -39,30 +39,22 @@ app.get('/logout',function(request,response){
             }
         });
     });
+
 app.post('/create_collection',function(request,response){
-	var col_name  = "product_"+request.body.col_name;
-	mongo.connect(uristring, function (err, db) {
-		if (err) {
-			db.close();
-			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-			respone.send(err);
-		} else {
-			db.createCollection(col_name, function(err, res) {
-				if (err) {
-					
-				}else{
-					console.log("Collection created!");
-					db.close();
-					 response.redirect('/sheet/'+col_name);  
-				}
-			});
-		}
-	});
+	collection.createCollection( request.body,function (err, result) {
+		if(err){
+			response.redirect('/sheet/'+request.body.col_name);  
+        }
+        if(result == null) {
+			response.redirect('/sheet/'+request.body.col_name);  
+        }else{
+			response.redirect('/sheet/'+result);  
+        }
+    });
 });
 
 app.post('/save_record',function(request,response){
 	var data  = JSON.parse(request.body.data);
-	
 	var dataBase  = request.body.data_base;
 	mongo.connect(uristring, function (err, db) {
 		if (err) {
@@ -120,10 +112,10 @@ app.all('/login', function(request, response) {
             request.session.errors = 'Invalid email id or password';
 			response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
         }else{
-			 request.session.email 		= request.body.email;
-                       request.session._id 		    = result._id;
-                       request.session.admin_name 	= request.body.name;
-                       request.session.adminUser	= result;
+			request.session.email 		= request.body.email;
+			request.session._id 		    = result._id;
+			request.session.admin_name 	= request.body.name;
+			request.session.adminUser	= result;
             response.redirect('collection_view');
         }
     });
