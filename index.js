@@ -66,9 +66,9 @@ app.post('/create_collection',function(request,response){
         }
 		// console.log("res"+JSON.stringify(result));
         if(result == null) {
-			response.redirect('/sheet/'+result["ops"]._id);  
+			response.redirect('/sheet/'+result.ops._id);  
         }else{
-			response.redirect('/sheet/'+result["ops"]._id);  
+			response.redirect('/sheet/'+result.ops._id);  
         }
     });
 });
