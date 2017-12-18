@@ -34,7 +34,7 @@ var deleteCollection = function(input,callback){
 			return callback(null, null); 
 		} else {
 			 db.collection("collections", function(err, collection) {
-				collection.remove({"brand_id":brand_id}, function (err, success) {
+				collection.remove({"_id":col_name}, function (err, success) {
 					if (err) {
 						return callback(null, null); 
 					}else{

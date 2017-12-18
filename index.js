@@ -101,7 +101,7 @@ app.post('/save_record',function(request,response){
     });
 	
 });
-
+ 
 app.get('/delete_collection/:col_id/:brand_id',function(request,response){
 	collection.deleteCollection( request.params,function (err, result) {
 		if(err){
