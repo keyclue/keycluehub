@@ -6,6 +6,7 @@ var createBrand = function(input,callback){
 	var brand_name  = "product_"+input.brand_name;
 	uristring = uristring + brand_name;
 	mongo.connect(uristring, function (err, db) {
+		console.log("db"+JSON.stringify(db));
 		if (err) {
 			return callback(null, null); 
 		}else{
