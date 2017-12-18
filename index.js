@@ -91,7 +91,7 @@ app.post('/save_record',function(request,response){
 	
 	collection.saveSheetData( request.body,function (err, result) {
 		if(err){
-			response.redirect('/collection_view');  
+			response.redirect('/collection_view/'+request.body.brand_id);  
         }
         if(result == null) {
 			response.redirect('/collection_view/'+request.body.brand_id);  	
