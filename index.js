@@ -66,9 +66,11 @@ app.post('/create_collection',function(request,response){
         }
 		// console.log("res"+JSON.stringify(result));
         if(result == null) {
-			response.redirect('/sheet/'+result._id);  
+			// response.redirect('/sheet/'+result._id);  
+			response.redirect('/collection_view/'+result);  
         }else{
-			response.redirect('/sheet/'+result._id);  
+			response.redirect('/collection_view/'+result);  
+			// response.redirect('/sheet/'+result._id);  
         }
     });
 });
