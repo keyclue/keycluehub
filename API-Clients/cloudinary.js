@@ -56,26 +56,37 @@ var deleteImage = function(input,callback){
 }
 exports.deleteImage = deleteImage;
 
-var saveSheetData = function(input,callback){
-var data  = JSON.parse(input.data);
-	var dataBase  = input.data_base;
-	mongo.connect(uristring, function (err, db) {
-		if (err) {
-			db.close();
-			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+var updateImage = function(input,callback){
+	var col_name  = input.col_name;
+	var sku  = input.sku;
+	var spu  = input.spu;
+	var cloudinary = require('cloudinary');
+	cloudinary.v2.api.resources_by_tag(spu, function(error, result){
+		if(error){
 			return callback(null, null); 
-		} else {
-			 db.collection(dataBase, function(err, collection) {
-				collection.insert({"product_details":data}, function (err, success) {
-					if (err) {
-						return callback(null, null); 
-					}else{
-						db.close();
-					 return callback(null, "success"); 
-					}
-				});
-			});
+		}else{
+			mongo.connect(uristring, function (err, db) {
+				if (err) {
+					db.close();
+					console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+					return callback(null, null); 
+				} else {
+					
+					db.collection(col_name, function(err, collection) {
+						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": result.resources[0].url }},function(error, success){
+							if(error){
+								return callback(null, "success"); 
+							}else{
+								return callback(null, "success"); 	
+							}
+						
+						});
+					});
+				}
+		});
 		}
-	});
+		});
+		
+ 
 }
-exports.saveSheetData = saveSheetData;
+exports.updateImage = updateImage;
