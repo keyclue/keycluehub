@@ -63,6 +63,7 @@ var updateImage = function(input,callback){
 	var cloudinary = require('cloudinary');
 	cloudinary.v2.api.resources_by_tag(spu, function(error, result){
 		if(error){
+			console.log ('ERROR');
 			return callback(null, null); 
 		}else{
 			mongo.connect(uristring, function (err, db) {
@@ -75,8 +76,10 @@ var updateImage = function(input,callback){
 					db.collection(col_name, function(err, collection) {
 						collection.update({"product_details.sku":sku},{ $set: { "product_details.$.image": result.resources[0].url }},function(error, success){
 							if(error){
+								console.log ('ERROR--'+error);
 								return callback(null, "success"); 
 							}else{
+								console.log ('ERROR7777');
 								return callback(null, "success"); 	
 							}
 						
