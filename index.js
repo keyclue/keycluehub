@@ -120,6 +120,10 @@ app.all('/login', function(request, response) {
             request.session.errors = 'Invalid email id or password';
 			response.render('pages/login',{title:'Login',success:false,errors:request.session.errors});
         }else{
+			 request.session.email 		= request.body.email;
+                       request.session._id 		    = success._id;
+                       request.session.admin_name 	= request.body.name;
+                       request.session.adminUser	= success;
             response.redirect('collection_view');
         }
     });

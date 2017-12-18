@@ -1,7 +1,4 @@
-var expressSession = require('express-session');	
-app.use(expressSession({secret:'max',saveUninitialized:false,resave:false,
-    maxAge: 7 * 24 * 3600 * 1000
-}));
+
 var mongo = require('mongodb');
 var uristring = 'mongodb://admin:admin123@ds135926.mlab.com:35926/heroku_914rlv3g';
 var login = function(input,callback){
@@ -23,13 +20,8 @@ var login = function(input,callback){
                    console.log("success1");
                    if(success.password===password){
                    // if(decrypt(success.password)===password){
-                       request.session.email 		= request.body.email;
-                       request.session._id 		    = success._id;
-                       request.session.admin_name 	= request.body.name;
-                       request.session.adminUser	= success;
-
-                      
-                    return callback(null,"Success");
+				                      
+                    return callback(null,success);
                    }else{
                       return callback(null,null);
                    }
