@@ -41,3 +41,27 @@ var deleteCollection = function(input,callback){
 	});
 }
 exports.deleteCollection = deleteCollection;
+
+var saveSheetData = function(input,callback){
+var data  = JSON.parse(input.data);
+	var dataBase  = input.data_base;
+	mongo.connect(uristring, function (err, db) {
+		if (err) {
+			db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			return callback(null, null); 
+		} else {
+			 db.collection(dataBase, function(err, collection) {
+				collection.insert({"product_details":data}, function (err, success) {
+					if (err) {
+						return callback(null, null); 
+					}else{
+						db.close();
+					 return callback(null, "success"); 
+					}
+				});
+			});
+		}
+	});
+}
+exports.saveSheetData = saveSheetData;
