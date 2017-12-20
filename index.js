@@ -274,6 +274,34 @@ app.all('/sheet/:col_id/:brand_id', Auth, function(request, response) {
 	}
 });
 
+app.all('/edit_sheet/:col_id/:brand_id', Auth, function(request, response) {
+	var col_id    = request.params.col_id; //collection_id
+	var brand_id  = request.params.brand_id; //brand_id
+	 if(request.method==='POST'){
+		 googleSheet.saveData( request.body,function (err, result) {
+			if(err){
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+			}
+			if(result == null) {
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+			}else{
+				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_name, brand_id:brand_id})	
+			}
+		});
+	}else{
+		googleSheet.getSheetData( request.params,function (err, result) {
+		if(err){
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+			}
+			if(result == null) {
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+			}else{
+				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_name, brand_id:brand_id})	
+			}	
+		});
+	}
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

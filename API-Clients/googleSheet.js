@@ -107,3 +107,27 @@ var googleSheet = function(input,callback){
 		});
 }
 exports.googleSheet = googleSheet;
+
+
+var getSheetData = function(input,callback){
+
+	var collection_id  = input.col_id;
+mongo.connect(uristring, function (err, db) {
+		if (err) {
+		   db.close();
+			console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+			respone.send(err);
+		} else {
+			db.collection("sheet_data", function(err, collection) {
+				collection.find({"collection_id":collection_id}).toArray( function (error, success) {
+					if(error){
+						return callback(error);
+					}else{
+						return callback(null, success);
+					}
+				});
+			});
+		}
+	});
+}
+exports.getSheetData = getSheetData;
