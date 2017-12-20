@@ -280,23 +280,23 @@ app.all('/edit_sheet/:col_id/:brand_id', Auth, function(request, response) {
 	 if(request.method==='POST'){
 		 googleSheet.saveData( request.body,function (err, result) {
 			if(err){
-				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_id, brand_id:brand_id })	
 			}
 			if(result == null) {
-				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_id, brand_id:brand_id })	
 			}else{
-				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_name, brand_id:brand_id})	
+				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_id, brand_id:brand_id})	
 			}
 		});
 	}else{
 		googleSheet.getSheetData( request.params,function (err, result) {
 		if(err){
-				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_id, brand_id:brand_id })	
 			}
 			if(result == null) {
-				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_name, brand_id:brand_id })	
+				response.render('pages/sheet',{url:"edit_sheet", title:'get',data:"", data_base:col_id, brand_id:brand_id })	
 			}else{
-				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_name, brand_id:brand_id})	
+				response.render('pages/sheet',{url:"edit_sheet", title:'post',data:result, row:5, data_base:col_id, brand_id:brand_id})	
 			}	
 		});
 	}
