@@ -156,10 +156,7 @@
 						</tr>
 						<%  } %>
 			<%  } %>   
-			<%  }else{ %>  
-					<tr><td colspan="8">No Product in database</td></tr>
 			
-			<%  } %>   
 					</tbody>
 					</table>
 				</div>
@@ -169,7 +166,11 @@
 				<input type="hidden" name="brand_id"  value="<%= brand_id %>">   
 				<a id="save" class="custom-btn btn btn-primary" href="javascript:void(0);">Save</a>
 				</form>
-				<% } %>
+				<%  }else{ %>  
+					<tr><td colspan="8">No Product in database</td></tr>
+			
+			<%  } %>   
+				
 			</div>
 			
 			<script>
