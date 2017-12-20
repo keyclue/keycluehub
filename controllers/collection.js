@@ -32,10 +32,10 @@ var deleteCollection = function(input,callback){
 		if (err) {
 			db.close();
 			return callback(null, null); 
-		} else {
+		} else {   
 			 db.collection("collections", function(err, collection) {
-				collection.deleteOne({"_id":ObjectId(col_name)}, function (err, success) {
-					console.log("delete"+JSON.stringify(success));;
+				collection.deleteOne({"_id":col_name}, function (err, success) {
+					console.log("delete"+JSON.stringify(success))
 					if (err) {
 						return callback(null, null); 
 					}else{
