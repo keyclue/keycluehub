@@ -30,6 +30,28 @@ app.use(expressSession({secret:'max',saveUninitialized:false,resave:false,
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+/* proxy*/
+var request = require('request');
+
+var options = {
+    proxy: 'http://9zn658nv8z7o3r:pnY7D16UlNWoWDofP9ZgjhZhyA@us-east-static-04.quotaguard.com:9293',
+    url: 'https://sheltered-caverns-33023.herokuapp.com/add_product',
+    headers: {
+        'User-Agent': 'node.js'
+    }
+}; 
+
+function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body);
+    }
+}
+
+request(options, callback);
+
+/* proxy*/
+
+
 
 /* for encryption   */
 function encrypt(text){
