@@ -35,7 +35,7 @@ var request = require('request');
 
 var options = {
     proxy: 'https://9zn658nv8z7o3r:pnY7D16UlNWoWDofP9ZgjhZhyA@us-east-static-04.quotaguard.com:9293',
-    url: 'https://sheltered-caverns-33023.herokuapp.com',
+    url: 'https://sheltered-caverns-33023.herokuapp.com/add_product',
     headers: {
         'User-Agent': 'node.js'
     }
