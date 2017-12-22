@@ -364,7 +364,7 @@ app.all('/add_product', function(request, response) {
 		'app_key': '1023557753',
 		'app_secret': 'sandbox3eac65c1b13324395a2cde358',
 		'app_secret': 'sandbox3eac65c1b13324395a2cde358',
-		'session':'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
+		// 'session':'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
 		'method': 'taobao.item.add',
 		'cid':'50011999',
 		// 'outer_id':'96330012',
