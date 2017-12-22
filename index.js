@@ -41,13 +41,13 @@ var options = {
     }
 }; 
 
-function callback(error, response, body) {
+function callback1(error, response, body) {
     if (!error && response.statusCode == 200) {
         console.log("body+" + body);
     }
 }
 
-request(options, callback);
+request(options, callback1);
 
 /* proxy*/
 
