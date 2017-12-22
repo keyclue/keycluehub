@@ -372,7 +372,7 @@ app.all('/add_product', function(request, response) {
 		// 'sale_props':'pid:vid;pid:vid',
 		// 'customer_props':'20000:UNIQLO:Model:001:632501:1234',
 		// 'price':'200.07',
-		'image':'I uploaded the content',       
+		'image':'I uploaded the content',         
 		// 'raw_image':'https://img.alicdn.com/bao/uploaded/i1/2274014597/TB2B_YOXam5V1BjSspoXXa8VXXa_!!2274014597.jpg',
 		// 'image':imageData,
 		// 'name':'notebook',
