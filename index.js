@@ -359,13 +359,11 @@ app.all('/add_product', function(request, response) {
 	taobao.core.call({
 		method: 'get',				//可选，默认为get, 各个API需要的method可能不一样，请参阅淘宝API文档 
 		protocol: 'http',			//可选，默认为http, 指定协议，支持http, https 
-		sandbox: true				//可选，默认为false, 指定是否为沙箱环境，可通过taobao.config配置默认值 
+		sandbox: false				//可选，默认为false, 指定是否为沙箱环境，可通过taobao.config配置默认值 
 	}, {
-		'app_key': '1023557753',
-		'app_secret': 'sandbox3eac65c1b13324395a2cde358',
-		'app_secret': 'sandbox3eac65c1b13324395a2cde358',
-		'REST_URL' : 'http://jenkins.nengmao.net',
-		// 'session':'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
+		'app_key': '23557753',
+		'app_secret': 'fe07dd33eac65c1b13324395a2cde358',
+		'session':'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
 		'method': 'taobao.item.add',
 		'cid':'50011999',
 		// 'outer_id':'96330012',
