@@ -87,6 +87,8 @@ app.post('/create_brand',function(request,response){
     });
 });
 
+
+
 app.post('/save_record',function(request,response){
 	
 	collection.saveSheetData( request.body,function (err, result) {
@@ -274,6 +276,125 @@ app.all('/sheet/:col_id/:brand_id', Auth, function(request, response) {
 	}
 });
 
+
+/* testing api for another library of Tmall */
+/* app.all('/top1', function(request, response) {
+	
+var top = require('top');
+var client = top.createClient({
+	 appkey: '23557753',
+			appsecret: 'fe07dd33eac65c1b13324395a2cde358',
+			session :'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218'
+	});
+	// invoke 'taobao.user.get': http://api.taobao.com/apidoc/api.htm?path=cid:1-apiId:1
+	client.taobao_user_get({nick: 'john', fields: 'user_id,nick,seller_credit'}, function (err, user) {
+	  console.log(user);
+	  console.log(err);
+	  response.send({"user":user,"err":err});
+	});
+	
+}); */
+/* app.all('/sandbox_add_product', function(request, response) {
+var ApiClient = require('./lib/api/topClient.js').TopClient;
+const client = new ApiClient({
+    // 'appkey':'23897902',
+    // 'appsecret':'26657347b25d2e4bb454696ae717f988',
+	'appkey': '23557753',
+	'appsecret': 'fe07dd33eac65c1b13324395a2cde358',
+    'url':'http://gw.api.taobao.com/router/rest'
+});
+
+client.execute('alibaba.aliqin.fc.sms.num.send',
+    {
+        'rec_num':'17612345678',
+        'sms_free_sign_name':'就业指导中心',
+        'sms_param': '{"name":"姓名"}',
+        'sms_template_code': 'SMS_70135147',
+        'sms_type': 'normal'
+    },
+    function (error,res) {
+        if(!error){
+            console.log(res);
+            response.send(res);
+		} else{
+            console.log(error);
+            response.send(error);
+		}
+    }
+);
+}); */
+
+app.all('/search_product', function(request, response) {
+	var taobao = require('taobao');
+	taobao.core.call({
+		'app_key': '23557753',
+		'app_secret': 'fe07dd33eac65c1b13324395a2cde358',
+		'session': '61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
+		'method': 'taobao.products.search',
+		'fields': 'product_id,name,pic_url,cid,props,price,tsc',
+		'cid': '50011999',
+		'status': '3'		
+	}, function(data) {
+		response.send(data);
+	});
+});
+
+
+app.all('/add_product', function(request, response) {
+	var jpeg = require('jpeg-js');
+	var fs = require('fs');
+	//var md5 = require('md5'); // uninstall this module
+	// var base64Img = require('base64-img'); // uninstall this module
+	var jpegData = fs.readFileSync('./woman.jpg');
+	var rawImageData = jpeg.decode(jpegData, true);
+	var taobao = require('taobao');
+	/* var configVar = {
+		app_key: '23557753',
+		app_secret: 'fe07dd33eac65c1b13324395a2cde358',
+		session :'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
+		method: 'taobao.product.add'
+	};
+	taobao.config(configVar); */
+ 
+	taobao.core.call({
+		method: 'get',				//可选，默认为get, 各个API需要的method可能不一样，请参阅淘宝API文档 
+		protocol: 'http',			//可选，默认为http, 指定协议，支持http, https 
+		sandbox: false				//可选，默认为false, 指定是否为沙箱环境，可通过taobao.config配置默认值 
+	}, {
+		'app_key': '23557753',
+		'app_secret': 'fe07dd33eac65c1b13324395a2cde358',
+		'session':'61000051ff9e5102f2b320f2a2e773f0dafecc6ca1e5bd13031625218',
+		'method': 'taobao.item.add',
+		'cid':'50011999',
+		// 'outer_id':'96330012',
+		//'props':'pid:vid;pid:vid',
+		// 'binds':'pid:vid;pid:vid',
+		// 'sale_props':'pid:vid;pid:vid',
+		// 'customer_props':'20000:UNIQLO:Model:001:632501:1234',
+		// 'price':'200.07',
+		'image':'I uploaded the content',
+		// 'raw_image':'https://img.alicdn.com/bao/uploaded/i1/2274014597/TB2B_YOXam5V1BjSspoXXa8VXXa_!!2274014597.jpg',
+		// 'image':imageData,
+		// 'name':'notebook',
+		// 'desc':'Thisisaproductdescription',
+		// 'major':'true',
+		// 'vertical_market':'4',
+		// 'market_time':'2018-01-01 00:00:00',
+		// 'property_alias':'1627207:3232483:Deepgreen',
+		// 'packing_list':'Instructions:1;headset:1;charger:1',
+	   // 'extra_info':'{"field_key": "description", "field_name": "Introduction", "field_value": "I am the introduction"}, {"field_name": "directory", "field_value": "I am the directory"}',
+		// 'market_id':'2',
+		// 'sell_pt':'Starthesameparagraph',
+		// 'template_id':'1',
+		//'suite_items_str':'1000000062318020:1;1000000062318020:2;',
+	   // 'is_pub_suite':'false'
+		
+	}, function(error, data) {
+		console.log("error"+error);
+		console.log("data"+data);
+		response.send(error);
+	});
+});
 app.all('/edit_sheet/:col_id/:brand_id', Auth, function(request, response) {
 	var col_id    = request.params.col_id; //collection_id
 	var brand_id  = request.params.brand_id; //brand_id
